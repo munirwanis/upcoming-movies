@@ -39,6 +39,7 @@ class RESTService {
                     do {
                         return try self.decoder.decode(T.self, from: jsonData)
                     } catch {
+                        App.shared.log.error("Serialization error from \(url)", error: error)
                         throw AppError.serialization
                     }
                 })
