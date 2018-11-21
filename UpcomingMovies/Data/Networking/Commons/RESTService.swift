@@ -21,9 +21,8 @@ class RESTService {
             let urlRequest = try createRequest(from: restRequest)
             let url = urlRequest.url?.absoluteString ?? ""
             
-            return Alamofire.SessionManager.default
-                .rx
-                .request(urlRequest: urlRequest)
+            return RxAlamofire
+                .request(urlRequest)
                 .observeOn(MainScheduler.instance)
                 .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
                 .validate({ (_, response, data) in
