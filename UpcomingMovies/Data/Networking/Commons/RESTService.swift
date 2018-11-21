@@ -14,8 +14,9 @@ typealias Parameters = [String : Any]
 typealias Headers = [String : String]
 
 class RESTService {
+    private let decoder = JSONDecoder()
     
-    func requestData(with restRequest: RESTRequest) -> Observable<Data> {
+    func requestData<T: Decodable>(with restRequest: RESTRequest) -> Observable<T> {
         
         do {
             let urlRequest = try createRequest(from: restRequest)
@@ -25,7 +26,7 @@ class RESTService {
                 .request(urlRequest)
                 .observeOn(MainScheduler.instance)
                 .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
-                .validate({ (_, response, data) in
+                .validate({ [unowned self] (_, response, data) in
                     App.shared.log.info("Request to: \(url)", data: data)
                     return self.validate(from: response)
                 })
@@ -34,8 +35,12 @@ class RESTService {
                     App.shared.log.error("Error from \(url)", error: error)
                     try self.handle(error)
                 })
-                .map({ _, jsonData in
-                    jsonData
+                .map({ [unowned self] (_, jsonData) in
+                    do {
+                        return try self.decoder.decode(T.self, from: jsonData)
+                    } catch {
+                        throw AppError.serialization
+                    }
                 })
             
         } catch {
