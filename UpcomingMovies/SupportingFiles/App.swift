@@ -19,6 +19,7 @@ final class App {
     
     static let shared = App()
     let log: Logger
+    let environment: Environment = .init(type: .production)
 }
 
 extension App {
