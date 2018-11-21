@@ -40,6 +40,12 @@
 		A124210721A4CB1F00E18EB9 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A124210421A4CB1F00E18EB9 /* Logger.swift */; };
 		A124210821A4CB1F00E18EB9 /* DebugLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A124210521A4CB1F00E18EB9 /* DebugLogger.swift */; };
 		A124210A21A4CC2000E18EB9 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = A124210921A4CC2000E18EB9 /* App.swift */; };
+		A124211221A4EC7000E18EB9 /* RESTService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A124210D21A4EC7000E18EB9 /* RESTService.swift */; };
+		A124211321A4EC7000E18EB9 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = A124210E21A4EC7000E18EB9 /* JSON.swift */; };
+		A124211421A4EC7000E18EB9 /* RESTVerb.swift in Sources */ = {isa = PBXBuildFile; fileRef = A124210F21A4EC7000E18EB9 /* RESTVerb.swift */; };
+		A124211521A4EC7000E18EB9 /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = A124211021A4EC7000E18EB9 /* ParameterEncoding.swift */; };
+		A124211621A4EC7000E18EB9 /* RESTRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A124211121A4EC7000E18EB9 /* RESTRequest.swift */; };
+		A124211A21A4EF7400E18EB9 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A124211921A4EF7400E18EB9 /* AppError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +105,12 @@
 		A124210421A4CB1F00E18EB9 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		A124210521A4CB1F00E18EB9 /* DebugLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugLogger.swift; sourceTree = "<group>"; };
 		A124210921A4CC2000E18EB9 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
+		A124210D21A4EC7000E18EB9 /* RESTService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RESTService.swift; sourceTree = "<group>"; };
+		A124210E21A4EC7000E18EB9 /* JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
+		A124210F21A4EC7000E18EB9 /* RESTVerb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RESTVerb.swift; sourceTree = "<group>"; };
+		A124211021A4EC7000E18EB9 /* ParameterEncoding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParameterEncoding.swift; sourceTree = "<group>"; };
+		A124211121A4EC7000E18EB9 /* RESTRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RESTRequest.swift; sourceTree = "<group>"; };
+		A124211921A4EF7400E18EB9 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -312,6 +324,7 @@
 		A12420FC21A4C83500E18EB9 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				A124211921A4EF7400E18EB9 /* AppError.swift */,
 				A12420FD21A4C9F300E18EB9 /* Movie.swift */,
 				A12420FF21A4CA3100E18EB9 /* MovieDetails.swift */,
 			);
@@ -321,6 +334,7 @@
 		A124210121A4CAFD00E18EB9 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				A124210B21A4EC3400E18EB9 /* Networking */,
 				A124210221A4CB0100E18EB9 /* Logger */,
 			);
 			path = Data;
@@ -334,6 +348,26 @@
 				A124210321A4CB1E00E18EB9 /* MutedLogger.swift */,
 			);
 			path = Logger;
+			sourceTree = "<group>";
+		};
+		A124210B21A4EC3400E18EB9 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				A124210C21A4EC4500E18EB9 /* Commons */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		A124210C21A4EC4500E18EB9 /* Commons */ = {
+			isa = PBXGroup;
+			children = (
+				A124210D21A4EC7000E18EB9 /* RESTService.swift */,
+				A124211121A4EC7000E18EB9 /* RESTRequest.swift */,
+				A124210F21A4EC7000E18EB9 /* RESTVerb.swift */,
+				A124211021A4EC7000E18EB9 /* ParameterEncoding.swift */,
+				A124210E21A4EC7000E18EB9 /* JSON.swift */,
+			);
+			path = Commons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -471,6 +505,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A124211521A4EC7000E18EB9 /* ParameterEncoding.swift in Sources */,
 				A12420FE21A4C9F300E18EB9 /* Movie.swift in Sources */,
 				A124210821A4CB1F00E18EB9 /* DebugLogger.swift in Sources */,
 				A12420D821A4BCF200E18EB9 /* Observable+Extension.swift in Sources */,
@@ -481,15 +516,20 @@
 				A12420F021A4C06E00E18EB9 /* Strings.swift in Sources */,
 				A12420DE21A4BD7B00E18EB9 /* UIViewController+ChildViewController.swift in Sources */,
 				A124209A21A49F0500E18EB9 /* ViewController.swift in Sources */,
+				A124211621A4EC7000E18EB9 /* RESTRequest.swift in Sources */,
 				A124210721A4CB1F00E18EB9 /* Logger.swift in Sources */,
 				A124210021A4CA3100E18EB9 /* MovieDetails.swift in Sources */,
+				A124211421A4EC7000E18EB9 /* RESTVerb.swift in Sources */,
 				A12420E821A4BEFB00E18EB9 /* LoadingViewController.swift in Sources */,
 				A12420F921A4C64D00E18EB9 /* InternalOrServerErrorViewController.swift in Sources */,
+				A124211A21A4EF7400E18EB9 /* AppError.swift in Sources */,
 				A124210621A4CB1F00E18EB9 /* MutedLogger.swift in Sources */,
+				A124211321A4EC7000E18EB9 /* JSON.swift in Sources */,
 				A12420E221A4BE1300E18EB9 /* NibCreatable.swift in Sources */,
 				A124209821A49F0500E18EB9 /* AppDelegate.swift in Sources */,
 				A12420E021A4BD8200E18EB9 /* TableViewReusable.swift in Sources */,
 				A12420DC21A4BD7400E18EB9 /* NSObject+Extension.swift in Sources */,
+				A124211221A4EC7000E18EB9 /* RESTService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
