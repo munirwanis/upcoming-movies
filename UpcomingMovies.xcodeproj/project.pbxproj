@@ -34,6 +34,12 @@
 		A12420F521A4C4EC00E18EB9 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12420F421A4C4EC00E18EB9 /* Colors.swift */; };
 		A12420F921A4C64D00E18EB9 /* InternalOrServerErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12420F721A4C64D00E18EB9 /* InternalOrServerErrorViewController.swift */; };
 		A12420FA21A4C64D00E18EB9 /* InternalOrServerErrorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A12420F821A4C64D00E18EB9 /* InternalOrServerErrorViewController.xib */; };
+		A12420FE21A4C9F300E18EB9 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12420FD21A4C9F300E18EB9 /* Movie.swift */; };
+		A124210021A4CA3100E18EB9 /* MovieDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12420FF21A4CA3100E18EB9 /* MovieDetails.swift */; };
+		A124210621A4CB1F00E18EB9 /* MutedLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A124210321A4CB1E00E18EB9 /* MutedLogger.swift */; };
+		A124210721A4CB1F00E18EB9 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A124210421A4CB1F00E18EB9 /* Logger.swift */; };
+		A124210821A4CB1F00E18EB9 /* DebugLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A124210521A4CB1F00E18EB9 /* DebugLogger.swift */; };
+		A124210A21A4CC2000E18EB9 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = A124210921A4CC2000E18EB9 /* App.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +93,12 @@
 		A12420F421A4C4EC00E18EB9 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		A12420F721A4C64D00E18EB9 /* InternalOrServerErrorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InternalOrServerErrorViewController.swift; sourceTree = "<group>"; };
 		A12420F821A4C64D00E18EB9 /* InternalOrServerErrorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InternalOrServerErrorViewController.xib; sourceTree = "<group>"; };
+		A12420FD21A4C9F300E18EB9 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		A12420FF21A4CA3100E18EB9 /* MovieDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetails.swift; sourceTree = "<group>"; };
+		A124210321A4CB1E00E18EB9 /* MutedLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MutedLogger.swift; sourceTree = "<group>"; };
+		A124210421A4CB1F00E18EB9 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		A124210521A4CB1F00E18EB9 /* DebugLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugLogger.swift; sourceTree = "<group>"; };
+		A124210921A4CC2000E18EB9 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,11 +155,12 @@
 		A124209621A49F0500E18EB9 /* UpcomingMovies */ = {
 			isa = PBXGroup;
 			children = (
+				A124210121A4CAFD00E18EB9 /* Data */,
+				A12420FC21A4C83500E18EB9 /* Domain */,
+				A12420FB21A4C82200E18EB9 /* Presentation */,
 				A12420D521A4BC4000E18EB9 /* Commons */,
 				A12420D121A4BA2D00E18EB9 /* Resources */,
 				A12420D021A4B9FA00E18EB9 /* SupportingFiles */,
-				A124209921A49F0500E18EB9 /* ViewController.swift */,
-				A124209B21A49F0500E18EB9 /* Main.storyboard */,
 			);
 			path = UpcomingMovies;
 			sourceTree = "<group>";
@@ -185,6 +198,7 @@
 		A12420D021A4B9FA00E18EB9 /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
+				A124210921A4CC2000E18EB9 /* App.swift */,
 				A124209721A49F0500E18EB9 /* AppDelegate.swift */,
 				A12420A021A49F0700E18EB9 /* LaunchScreen.storyboard */,
 				A12420A321A49F0700E18EB9 /* Info.plist */,
@@ -284,6 +298,42 @@
 				A12420F721A4C64D00E18EB9 /* InternalOrServerErrorViewController.swift */,
 			);
 			path = InternalOrServerError;
+			sourceTree = "<group>";
+		};
+		A12420FB21A4C82200E18EB9 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				A124209921A49F0500E18EB9 /* ViewController.swift */,
+				A124209B21A49F0500E18EB9 /* Main.storyboard */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		A12420FC21A4C83500E18EB9 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				A12420FD21A4C9F300E18EB9 /* Movie.swift */,
+				A12420FF21A4CA3100E18EB9 /* MovieDetails.swift */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		A124210121A4CAFD00E18EB9 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				A124210221A4CB0100E18EB9 /* Logger */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		A124210221A4CB0100E18EB9 /* Logger */ = {
+			isa = PBXGroup;
+			children = (
+				A124210521A4CB1F00E18EB9 /* DebugLogger.swift */,
+				A124210421A4CB1F00E18EB9 /* Logger.swift */,
+				A124210321A4CB1E00E18EB9 /* MutedLogger.swift */,
+			);
+			path = Logger;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -421,15 +471,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A12420FE21A4C9F300E18EB9 /* Movie.swift in Sources */,
+				A124210821A4CB1F00E18EB9 /* DebugLogger.swift in Sources */,
 				A12420D821A4BCF200E18EB9 /* Observable+Extension.swift in Sources */,
+				A124210A21A4CC2000E18EB9 /* App.swift in Sources */,
 				A12420F521A4C4EC00E18EB9 /* Colors.swift in Sources */,
 				A12420F221A4C0BF00E18EB9 /* String+Extensions.swift in Sources */,
 				A12420ED21A4BFEB00E18EB9 /* NoConnectionViewController.swift in Sources */,
 				A12420F021A4C06E00E18EB9 /* Strings.swift in Sources */,
 				A12420DE21A4BD7B00E18EB9 /* UIViewController+ChildViewController.swift in Sources */,
 				A124209A21A49F0500E18EB9 /* ViewController.swift in Sources */,
+				A124210721A4CB1F00E18EB9 /* Logger.swift in Sources */,
+				A124210021A4CA3100E18EB9 /* MovieDetails.swift in Sources */,
 				A12420E821A4BEFB00E18EB9 /* LoadingViewController.swift in Sources */,
 				A12420F921A4C64D00E18EB9 /* InternalOrServerErrorViewController.swift in Sources */,
+				A124210621A4CB1F00E18EB9 /* MutedLogger.swift in Sources */,
 				A12420E221A4BE1300E18EB9 /* NibCreatable.swift in Sources */,
 				A124209821A49F0500E18EB9 /* AppDelegate.swift in Sources */,
 				A12420E021A4BD8200E18EB9 /* TableViewReusable.swift in Sources */,
