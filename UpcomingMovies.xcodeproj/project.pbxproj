@@ -47,6 +47,10 @@
 		A124211621A4EC7000E18EB9 /* RESTRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A124211121A4EC7000E18EB9 /* RESTRequest.swift */; };
 		A124211A21A4EF7400E18EB9 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A124211921A4EF7400E18EB9 /* AppError.swift */; };
 		A124211C21A4F73200E18EB9 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A124211B21A4F73200E18EB9 /* Environment.swift */; };
+		A124212021A64C0F00E18EB9 /* UpcomingMoviesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A124211F21A64C0F00E18EB9 /* UpcomingMoviesResponse.swift */; };
+		A124212221A64E1100E18EB9 /* UpcomingMoviesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A124212121A64E1100E18EB9 /* UpcomingMoviesService.swift */; };
+		A124212421A6D45D00E18EB9 /* UpcomingMoviesServiceMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A124212321A6D45D00E18EB9 /* UpcomingMoviesServiceMapper.swift */; };
+		A124212721A75ED600E18EB9 /* ImageDownloadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A124212621A75ED600E18EB9 /* ImageDownloadService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,6 +117,10 @@
 		A124211121A4EC7000E18EB9 /* RESTRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RESTRequest.swift; sourceTree = "<group>"; };
 		A124211921A4EF7400E18EB9 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
 		A124211B21A4F73200E18EB9 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		A124211F21A64C0F00E18EB9 /* UpcomingMoviesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingMoviesResponse.swift; sourceTree = "<group>"; };
+		A124212121A64E1100E18EB9 /* UpcomingMoviesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingMoviesService.swift; sourceTree = "<group>"; };
+		A124212321A6D45D00E18EB9 /* UpcomingMoviesServiceMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingMoviesServiceMapper.swift; sourceTree = "<group>"; };
+		A124212621A75ED600E18EB9 /* ImageDownloadService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloadService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -355,6 +363,8 @@
 		A124210B21A4EC3400E18EB9 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				A124212521A75EC700E18EB9 /* ImageDownload */,
+				A124211D21A64BE800E18EB9 /* UpcomingMovies */,
 				A124210C21A4EC4500E18EB9 /* Commons */,
 			);
 			path = Networking;
@@ -371,6 +381,32 @@
 				A124210E21A4EC7000E18EB9 /* JSON.swift */,
 			);
 			path = Commons;
+			sourceTree = "<group>";
+		};
+		A124211D21A64BE800E18EB9 /* UpcomingMovies */ = {
+			isa = PBXGroup;
+			children = (
+				A124211E21A64BF300E18EB9 /* Model */,
+				A124212121A64E1100E18EB9 /* UpcomingMoviesService.swift */,
+				A124212321A6D45D00E18EB9 /* UpcomingMoviesServiceMapper.swift */,
+			);
+			path = UpcomingMovies;
+			sourceTree = "<group>";
+		};
+		A124211E21A64BF300E18EB9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A124211F21A64C0F00E18EB9 /* UpcomingMoviesResponse.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A124212521A75EC700E18EB9 /* ImageDownload */ = {
+			isa = PBXGroup;
+			children = (
+				A124212621A75ED600E18EB9 /* ImageDownloadService.swift */,
+			);
+			path = ImageDownload;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -509,11 +545,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				A124211521A4EC7000E18EB9 /* ParameterEncoding.swift in Sources */,
+				A124212021A64C0F00E18EB9 /* UpcomingMoviesResponse.swift in Sources */,
 				A12420FE21A4C9F300E18EB9 /* Movie.swift in Sources */,
 				A124210821A4CB1F00E18EB9 /* DebugLogger.swift in Sources */,
 				A12420D821A4BCF200E18EB9 /* Observable+Extension.swift in Sources */,
 				A124210A21A4CC2000E18EB9 /* App.swift in Sources */,
 				A12420F521A4C4EC00E18EB9 /* Colors.swift in Sources */,
+				A124212721A75ED600E18EB9 /* ImageDownloadService.swift in Sources */,
 				A12420F221A4C0BF00E18EB9 /* String+Extensions.swift in Sources */,
 				A12420ED21A4BFEB00E18EB9 /* NoConnectionViewController.swift in Sources */,
 				A12420F021A4C06E00E18EB9 /* Strings.swift in Sources */,
@@ -523,8 +561,10 @@
 				A124210721A4CB1F00E18EB9 /* Logger.swift in Sources */,
 				A124210021A4CA3100E18EB9 /* MovieDetails.swift in Sources */,
 				A124211421A4EC7000E18EB9 /* RESTVerb.swift in Sources */,
+				A124212221A64E1100E18EB9 /* UpcomingMoviesService.swift in Sources */,
 				A12420E821A4BEFB00E18EB9 /* LoadingViewController.swift in Sources */,
 				A12420F921A4C64D00E18EB9 /* InternalOrServerErrorViewController.swift in Sources */,
+				A124212421A6D45D00E18EB9 /* UpcomingMoviesServiceMapper.swift in Sources */,
 				A124211A21A4EF7400E18EB9 /* AppError.swift in Sources */,
 				A124210621A4CB1F00E18EB9 /* MutedLogger.swift in Sources */,
 				A124211321A4EC7000E18EB9 /* JSON.swift in Sources */,

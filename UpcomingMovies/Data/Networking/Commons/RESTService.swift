@@ -7,16 +7,25 @@
 //
 
 import Alamofire
+import AlamofireImage
 import RxAlamofire
 import RxSwift
+import UIKit
 
 typealias Parameters = [String : Any]
 typealias Headers = [String : String]
 
 class RESTService {
-    private let decoder = JSONDecoder()
+    private let decoder: JSONDecoder = {
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        decoder.dateDecodingStrategy = .formatted(dateFormatter)
+        return decoder
+    }()
     
-    func requestData<T: Decodable>(with restRequest: RESTRequest) -> Observable<T> {
+    func request<T: Decodable>(with restRequest: RESTRequest) -> Observable<T> {
         
         do {
             let urlRequest = try createRequest(from: restRequest)
@@ -47,6 +56,25 @@ class RESTService {
         } catch {
             return Observable.error(error)
         }
+    }
+    
+    func requestImage(from path: String) -> Observable<UIImage> {
+        return Observable.create { observable in
+            Alamofire.request(path).responseImage { dataResponse in
+                if let image = dataResponse.result.value {
+                    App.shared.log.info("Image request to: \(path) was successful")
+                    observable.onNext(image)
+                    observable.onCompleted()
+                } else {
+                    App.shared.log.error("Image request to: \(path)", error: dataResponse.result.error)
+                    observable.onError(AppError.badRequest)
+                    observable.onCompleted()
+                }
+            }
+            return Disposables.create()
+        }
+        .observeOn(MainScheduler.instance)
+        .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
     }
     
     private func createRequest(from request: RESTRequest) throws -> URLRequest {
