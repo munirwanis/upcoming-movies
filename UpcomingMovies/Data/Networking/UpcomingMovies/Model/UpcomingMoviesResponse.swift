@@ -13,9 +13,9 @@ struct UpcomingMoviesResponse: Decodable {
     let totalPages: Int
     
     struct MovieResponse: Decodable {
-        let id: String
+        let id: Int
         let title: String
-        let posterPath: String
+        let posterPath: String?
         let releaseDate: Date
     }
 }

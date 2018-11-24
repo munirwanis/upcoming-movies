@@ -7,10 +7,28 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
 
-final class UpcomingMoviesTableViewController: UITableViewController {
+final class UpcomingMoviesTableViewController: UIViewController, UITableViewDelegate {
+    @IBOutlet private var tableView: UITableView!
     
-    init() {
+    private let bag = DisposeBag()
+    private let viewModel: UpcomingMoviesViewModeling
+    private let upcomingMoviesSubject = PublishSubject<UpcomingMoviesModel>()
+    private var upcomingMovies = UpcomingMoviesModel()
+    private let errorView = InternalOrServerErrorViewController()
+    private let loadingView = LoadingViewController()
+    private let noConnectionView = NoConnectionViewController()
+    
+    private let loadingIndicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView(style: .gray)
+        indicator.hidesWhenStopped = true
+        return indicator
+    }()
+    
+    init(viewModel: UpcomingMoviesViewModeling) {
+        self.viewModel = viewModel
         super.init(nibName: UpcomingMoviesTableViewController.identifier, bundle: nil)
     }
     
@@ -29,34 +47,122 @@ extension UpcomingMoviesTableViewController {
     }
 }
 
-// MARK: - Table view data source
-
-extension UpcomingMoviesTableViewController {
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
-    }
-    
-    /*
-     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-     let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-     
-     // Configure the cell...
-     
-     return cell
-     }
-     */
-}
-
 // MARK: - Setup
 
 extension UpcomingMoviesTableViewController {
     private func setup() {
+        tableView.rx.setDelegate(self).disposed(by: bag)
+        tableView.register(cellNib: UpcomingMovieTableViewCell.self)
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 350
         
+        setupColors()
+        setupTexts()
+        
+        handleUpcomingMovies()
+    }
+    
+    // MARK: - Colors
+    
+    private func setupColors() {
+        tableView.backgroundColor = Colors.Background.green
+    }
+    
+    // MARK: - Texts
+    
+    private func setupTexts() {
+        title = Strings.UpcomingMovies.title
+    }
+}
+
+// MARK: - Handlers
+
+extension UpcomingMoviesTableViewController {
+    private func handleUpcomingMovies() {
+        upcomingMoviesSubject.asObserver()
+            .bind(to: tableView.rx.items(cellIdentifier: UpcomingMovieTableViewCell.identifier,
+                                         cellType: UpcomingMovieTableViewCell.self)) { [unowned self] _, element, cell in
+                                            cell.viewModel = self.viewModel
+                                            cell.upcomingMovie = element
+                                            self.viewModel.image(from: element.iconPath ?? "")
+                                                .drive(onNext: { image in
+                                                    cell.movieIcon = image
+                                                })
+                                                .disposed(by: cell.bag)
+            }
+            .disposed(by: self.bag)
+        
+        let noConnectionRetryObservable = noConnectionView.retryButtonTap.flatMap { [unowned self] _ -> Observable<UpcomingMoviesState> in
+            self.noConnectionView.hide()
+            return self.viewModel.listUpcomingMovies().startWith(.firstLoading)
+        }
+        
+        let contentOffsetObservable = tableView.rx.contentOffset
+            .flatMap { [unowned self] offset in
+                self.tableView.isNearBottomEdge(edgeOffset: 20.0) ? self.viewModel.listUpcomingMovies().startWith(.loading) : Observable.empty()
+        }
+        
+        let firstLoadingObservable = viewModel.listUpcomingMovies().observeOn(MainScheduler.instance).startWith(.firstLoading)
+        
+        let viewState = Observable.merge(firstLoadingObservable, contentOffsetObservable, noConnectionRetryObservable).share()
+        
+        viewState
+            .subscribe(onNext: { [unowned self] state in self.render(state) })
+            .disposed(by: self.bag)
+    }
+    
+    private func render(_ state: UpcomingMoviesState) {
+        switch state {
+        case let .succcess(upcomingMovies):
+            hideLoading()
+            upcomingMoviesSubject.onNext(upcomingMovies)
+        case let .error(state):
+            hideLoading()
+            render(state)
+        case .firstLoading: showFirstLoading()
+        case .loading: showLoading()
+        }
+    }
+    
+    private func render(_ state: UpcomingMoviesErrorState) {
+        switch state {
+        case .general: showErrorView()
+        case .network: showNoConnectionView()
+        }
+    }
+}
+// MARK: - State views
+
+extension UpcomingMoviesTableViewController {
+    private func showLoading() {
+        loadingIndicator.startAnimating()
+    }
+    
+    private func showFirstLoading() {
+        add(child: loadingView, with: navigationController?.view.frame)
+        loadingView.show()
+    }
+    
+    private func hideLoading() {
+        loadingView.hide()
+        loadingIndicator.stopAnimating()
+    }
+    
+    private func showErrorView() {
+        add(child: errorView, with: navigationController?.view.frame)
+        errorView.show()
+    }
+    
+    private func hideErrorView() {
+        errorView.hide()
+    }
+    
+    private func showNoConnectionView() {
+        add(child: noConnectionView, with: navigationController?.view.frame)
+        noConnectionView.show()
+    }
+    
+    private func hideNoConnectionView() {
+        noConnectionView.hide()
     }
 }

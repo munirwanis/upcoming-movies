@@ -14,7 +14,7 @@ protocol UpcomingMoviesServiceMappable {
 
 struct UpcomingMoviesServiceMapper: UpcomingMoviesServiceMappable {
     func mapToMovies(_ upcomingMoviesResponse: UpcomingMoviesResponse) -> Movies {
-        return upcomingMoviesResponse.results.map {
+        return upcomingMoviesResponse.results.compactMap {
             Movie(id: $0.id,
                   name: $0.title,
                   iconPath: $0.posterPath,

@@ -10,8 +10,8 @@ import UIKit
 
 struct MovieDetails {
     let name: String
-    let posterPath: String
-    let backdropPath: String
+    let posterPath: String?
+    let backdropPath: String?
     let genres: [String]
     let overview: String
     let releaseDate: Date

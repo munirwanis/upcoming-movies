@@ -42,10 +42,11 @@ extension UpcomingMoviesService: UpcomingMoviesServicing {
         return request(with: apiRequest)
             .map { [unowned self] (response: UpcomingMoviesResponse) -> Movies in
                 self.totalPages = response.totalPages
+                if self.totalPages == self.currentPage { return [] }
                 return self.mapper.mapToMovies(response)
             }
             .scan([]) { [unowned self] (previous, current) -> Movies in
-                if self.currentPage <= self.totalPages {
+                if self.currentPage < self.totalPages {
                     self.currentPage += 1
                 }
                 return previous + current

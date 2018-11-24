@@ -12,3 +12,7 @@
 
 "internal-error-title" = "Sorry!";
 "internal-error-description" = "Something went wrong. :(";
+
+"upcoming-movies-release-date" = "Release date:";
+"upcoming-movies-genres" = "Genres:";
+"upcoming-movies-title" = "Upcoming Movies";

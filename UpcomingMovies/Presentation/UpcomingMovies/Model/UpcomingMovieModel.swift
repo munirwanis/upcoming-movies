@@ -11,8 +11,8 @@ import Foundation
 typealias UpcomingMoviesModel = [UpcomingMovieModel]
 
 struct UpcomingMovieModel {
-    let id: String
+    let id: Int
     let name: String
-    let iconPath: String
+    let iconPath: String?
     let releaseDate: String
 }

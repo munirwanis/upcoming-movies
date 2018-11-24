@@ -14,10 +14,12 @@ struct Colors {
     private struct Palette {
         private init() {}
         
-        static let primaryBlue = UIColor(named: "PrimaryBlue")
-        static let secondaryGreen = UIColor(named: "SecondaryGreen")
-        static let white = UIColor.white
-        static let black = UIColor.black
+        static let primaryBlue:    UIColor? = UIColor(named: "PrimaryBlue")
+        static let secondaryGreen: UIColor? = UIColor(named: "SecondaryGreen")
+        static let darkBlue:       UIColor  = #colorLiteral(red: 0.168627451, green: 0.5098039216, blue: 0.5411764706, alpha: 1)
+        static let white:          UIColor  = .white
+        static let black:          UIColor  = .black
+        static let clear:          UIColor  = .clear
     }
 }
 
@@ -25,10 +27,12 @@ extension Colors {
     struct General {
         private init() {}
         
+        static let darkBlue = Palette.darkBlue
         static let blue = Palette.primaryBlue
     }
     
     struct Background {
+        static let clear = Palette.clear
         static let white = Palette.white
         static let green = Palette.secondaryGreen
     }

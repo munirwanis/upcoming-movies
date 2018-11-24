@@ -50,8 +50,10 @@ final class InternalOrServerErrorViewController: UIViewController {
     }
     
     func hide() {
-        UIView.animate(withDuration: 0.3) { [weak self] in
+        UIView.animate(withDuration: 0.3, animations: { [weak self] in
             self?.view.alpha = 0
-        }
+        }, completion: { [weak self] _ in
+            self?.removeFromParent()
+        })
     }
 }

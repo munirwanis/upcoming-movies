@@ -16,9 +16,8 @@ final class NoConnectionViewController: UIViewController {
     @IBOutlet private var descriptionLabel: UILabel!
     @IBOutlet private var retryButton: UIButton!
     
-    var retryButtonTap: Observable<Void> {
-        return self.retryButton.rx.tap.asObservable()
-    }
+    private let bag = DisposeBag()
+    let retryButtonTap = PublishSubject<Void>()
     
     init() {
         super.init(nibName: NoConnectionViewController.identifier, bundle: nil)
@@ -38,6 +37,7 @@ final class NoConnectionViewController: UIViewController {
         
         imageView.image = #imageLiteral(resourceName: "noConnectionIcon")
         retryButton.layer.cornerRadius = 4
+        retryButton.rx.tap.bind(to: retryButtonTap).disposed(by: bag)
     }
     
     private func setTexts() {
@@ -61,8 +61,10 @@ final class NoConnectionViewController: UIViewController {
     }
     
     func hide() {
-        UIView.animate(withDuration: 0.3) { [weak self] in
+        UIView.animate(withDuration: 0.3, animations: { [weak self] in
             self?.view.alpha = 0
-        }
+            }, completion: { [weak self] _ in
+                self?.removeFromParent()
+        })
     }
 }

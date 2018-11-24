@@ -11,8 +11,8 @@ import UIKit
 typealias Movies = [Movie]
 
 struct Movie {
-    let id: String
+    let id: Int
     let name: String
-    let iconPath: String
+    let iconPath: String?
     let releaseDate: Date
 }
