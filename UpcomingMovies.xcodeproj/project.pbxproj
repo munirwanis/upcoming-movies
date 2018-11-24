@@ -54,6 +54,13 @@
 		A124213021A9589E00E18EB9 /* MovieDetailsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A124212F21A9589E00E18EB9 /* MovieDetailsResponse.swift */; };
 		A124213421A95AD700E18EB9 /* MovieDetailsServiceMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A124213321A95AD700E18EB9 /* MovieDetailsServiceMapper.swift */; };
 		A124213621A95BAB00E18EB9 /* MovieDetailsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A124213521A95BAB00E18EB9 /* MovieDetailsService.swift */; };
+		A124213D21A95F5D00E18EB9 /* UpcomingMoviesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A124213B21A95F5D00E18EB9 /* UpcomingMoviesTableViewController.swift */; };
+		A124213E21A95F5D00E18EB9 /* UpcomingMoviesTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A124213C21A95F5D00E18EB9 /* UpcomingMoviesTableViewController.xib */; };
+		A124214021A960D600E18EB9 /* UpcomingMoviesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A124213F21A960D600E18EB9 /* UpcomingMoviesViewModel.swift */; };
+		A124214221A9619400E18EB9 /* UpcomingMoviesState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A124214121A9619400E18EB9 /* UpcomingMoviesState.swift */; };
+		A124214421A961C600E18EB9 /* UpcomingMoviesErrorState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A124214321A961C600E18EB9 /* UpcomingMoviesErrorState.swift */; };
+		A124214921A96BC900E18EB9 /* UpcomingMovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A124214821A96BC900E18EB9 /* UpcomingMovieModel.swift */; };
+		A124214B21A96C2F00E18EB9 /* UpcomingMoviesMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A124214A21A96C2F00E18EB9 /* UpcomingMoviesMapper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -127,6 +134,13 @@
 		A124212F21A9589E00E18EB9 /* MovieDetailsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsResponse.swift; sourceTree = "<group>"; };
 		A124213321A95AD700E18EB9 /* MovieDetailsServiceMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsServiceMapper.swift; sourceTree = "<group>"; };
 		A124213521A95BAB00E18EB9 /* MovieDetailsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsService.swift; sourceTree = "<group>"; };
+		A124213B21A95F5D00E18EB9 /* UpcomingMoviesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingMoviesTableViewController.swift; sourceTree = "<group>"; };
+		A124213C21A95F5D00E18EB9 /* UpcomingMoviesTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpcomingMoviesTableViewController.xib; sourceTree = "<group>"; };
+		A124213F21A960D600E18EB9 /* UpcomingMoviesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingMoviesViewModel.swift; sourceTree = "<group>"; };
+		A124214121A9619400E18EB9 /* UpcomingMoviesState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingMoviesState.swift; sourceTree = "<group>"; };
+		A124214321A961C600E18EB9 /* UpcomingMoviesErrorState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingMoviesErrorState.swift; sourceTree = "<group>"; };
+		A124214821A96BC900E18EB9 /* UpcomingMovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingMovieModel.swift; sourceTree = "<group>"; };
+		A124214A21A96C2F00E18EB9 /* UpcomingMoviesMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingMoviesMapper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -331,6 +345,7 @@
 		A12420FB21A4C82200E18EB9 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				A124213721A95E1700E18EB9 /* UpcomingMovies */,
 				A124209921A49F0500E18EB9 /* ViewController.swift */,
 				A124209B21A49F0500E18EB9 /* Main.storyboard */,
 			);
@@ -430,6 +445,44 @@
 			isa = PBXGroup;
 			children = (
 				A124212F21A9589E00E18EB9 /* MovieDetailsResponse.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A124213721A95E1700E18EB9 /* UpcomingMovies */ = {
+			isa = PBXGroup;
+			children = (
+				A124214521A969A200E18EB9 /* Model */,
+				A124213921A95E3200E18EB9 /* ViewModel */,
+				A124213A21A95E3700E18EB9 /* View */,
+			);
+			path = UpcomingMovies;
+			sourceTree = "<group>";
+		};
+		A124213921A95E3200E18EB9 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A124213F21A960D600E18EB9 /* UpcomingMoviesViewModel.swift */,
+				A124214121A9619400E18EB9 /* UpcomingMoviesState.swift */,
+				A124214321A961C600E18EB9 /* UpcomingMoviesErrorState.swift */,
+				A124214A21A96C2F00E18EB9 /* UpcomingMoviesMapper.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		A124213A21A95E3700E18EB9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A124213B21A95F5D00E18EB9 /* UpcomingMoviesTableViewController.swift */,
+				A124213C21A95F5D00E18EB9 /* UpcomingMoviesTableViewController.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A124214521A969A200E18EB9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A124214821A96BC900E18EB9 /* UpcomingMovieModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -540,6 +593,7 @@
 			files = (
 				A12420A221A49F0700E18EB9 /* LaunchScreen.storyboard in Resources */,
 				A12420D421A4BA7E00E18EB9 /* Localizable.strings in Resources */,
+				A124213E21A95F5D00E18EB9 /* UpcomingMoviesTableViewController.xib in Resources */,
 				A12420FA21A4C64D00E18EB9 /* InternalOrServerErrorViewController.xib in Resources */,
 				A124209F21A49F0700E18EB9 /* Assets.xcassets in Resources */,
 				A12420E721A4BEFB00E18EB9 /* LoadingViewController.xib in Resources */,
@@ -570,6 +624,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A124213621A95BAB00E18EB9 /* MovieDetailsService.swift in Sources */,
+				A124214021A960D600E18EB9 /* UpcomingMoviesViewModel.swift in Sources */,
 				A124211521A4EC7000E18EB9 /* ParameterEncoding.swift in Sources */,
 				A124212021A64C0F00E18EB9 /* UpcomingMoviesResponse.swift in Sources */,
 				A12420FE21A4C9F300E18EB9 /* Movie.swift in Sources */,
@@ -583,24 +638,29 @@
 				A12420ED21A4BFEB00E18EB9 /* NoConnectionViewController.swift in Sources */,
 				A12420F021A4C06E00E18EB9 /* Strings.swift in Sources */,
 				A12420DE21A4BD7B00E18EB9 /* UIViewController+ChildViewController.swift in Sources */,
+				A124213D21A95F5D00E18EB9 /* UpcomingMoviesTableViewController.swift in Sources */,
 				A124209A21A49F0500E18EB9 /* ViewController.swift in Sources */,
 				A124211621A4EC7000E18EB9 /* RESTRequest.swift in Sources */,
 				A124210721A4CB1F00E18EB9 /* Logger.swift in Sources */,
 				A124210021A4CA3100E18EB9 /* MovieDetails.swift in Sources */,
+				A124214B21A96C2F00E18EB9 /* UpcomingMoviesMapper.swift in Sources */,
 				A124211421A4EC7000E18EB9 /* RESTVerb.swift in Sources */,
 				A124212221A64E1100E18EB9 /* UpcomingMoviesService.swift in Sources */,
 				A12420E821A4BEFB00E18EB9 /* LoadingViewController.swift in Sources */,
 				A12420F921A4C64D00E18EB9 /* InternalOrServerErrorViewController.swift in Sources */,
 				A124212421A6D45D00E18EB9 /* UpcomingMoviesServiceMapper.swift in Sources */,
 				A124213421A95AD700E18EB9 /* MovieDetailsServiceMapper.swift in Sources */,
+				A124214221A9619400E18EB9 /* UpcomingMoviesState.swift in Sources */,
 				A124211A21A4EF7400E18EB9 /* AppError.swift in Sources */,
 				A124210621A4CB1F00E18EB9 /* MutedLogger.swift in Sources */,
 				A124211321A4EC7000E18EB9 /* JSON.swift in Sources */,
 				A12420E221A4BE1300E18EB9 /* NibCreatable.swift in Sources */,
 				A124211C21A4F73200E18EB9 /* Environment.swift in Sources */,
+				A124214921A96BC900E18EB9 /* UpcomingMovieModel.swift in Sources */,
 				A124209821A49F0500E18EB9 /* AppDelegate.swift in Sources */,
 				A12420E021A4BD8200E18EB9 /* TableViewReusable.swift in Sources */,
 				A12420DC21A4BD7400E18EB9 /* NSObject+Extension.swift in Sources */,
+				A124214421A961C600E18EB9 /* UpcomingMoviesErrorState.swift in Sources */,
 				A124211221A4EC7000E18EB9 /* RESTService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
