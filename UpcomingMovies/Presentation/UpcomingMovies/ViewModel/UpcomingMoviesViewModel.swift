@@ -10,15 +10,9 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-typealias UpcomingMoviesViewModeling = UpcomingMoviesListViewModeling & UpcomingMovieImageDownloadViewModeling
-
-protocol UpcomingMoviesListViewModeling {
+protocol UpcomingMoviesViewModeling {
     func listUpcomingMovies() -> Observable<UpcomingMoviesState>
     func image(from path: String) -> SharedSequence<DriverSharingStrategy, UIImage>
-}
-
-protocol UpcomingMovieImageDownloadViewModeling {
-    func downloadImage(from path: String) -> Observable<UIImage>
 }
 
 final class UpcomingMoviesViewModel {
@@ -35,7 +29,7 @@ final class UpcomingMoviesViewModel {
 
 // MARK: - ViewModel implementation
 
-extension UpcomingMoviesViewModel: UpcomingMoviesListViewModeling {
+extension UpcomingMoviesViewModel: UpcomingMoviesViewModeling {
     func listUpcomingMovies() -> Observable<UpcomingMoviesState> {
         return service.listUpcomingMovies()
             .map { [unowned self] movies in
@@ -48,11 +42,5 @@ extension UpcomingMoviesViewModel: UpcomingMoviesListViewModeling {
     
     func image(from path: String) -> SharedSequence<DriverSharingStrategy, UIImage> {
         return imageService.backdrop(size: .medium, in: path).observeOn(MainScheduler.instance).asDriver(onErrorJustReturn: #imageLiteral(resourceName: "internalErrorIcon"))
-    }
-}
-
-extension UpcomingMoviesViewModel: UpcomingMovieImageDownloadViewModeling {
-    func downloadImage(from path: String) -> Observable<UIImage> {
-        return imageService.poster(size: .medium, in: path)
     }
 }

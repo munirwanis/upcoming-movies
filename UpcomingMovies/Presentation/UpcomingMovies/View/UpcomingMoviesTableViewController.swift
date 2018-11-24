@@ -82,7 +82,6 @@ extension UpcomingMoviesTableViewController {
         upcomingMoviesSubject.asObserver()
             .bind(to: tableView.rx.items(cellIdentifier: UpcomingMovieTableViewCell.identifier,
                                          cellType: UpcomingMovieTableViewCell.self)) { [unowned self] _, element, cell in
-                                            cell.viewModel = self.viewModel
                                             cell.upcomingMovie = element
                                             self.viewModel.image(from: element.iconPath ?? "")
                                                 .drive(onNext: { image in
