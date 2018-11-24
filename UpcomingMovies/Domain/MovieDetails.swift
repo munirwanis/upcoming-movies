@@ -10,8 +10,8 @@ import UIKit
 
 struct MovieDetails {
     let name: String
-    let posterImage: UIImage
-    let backdropImage: UIImage
+    let posterPath: String
+    let backdropPath: String
     let genres: [String]
     let overview: String
     let releaseDate: Date

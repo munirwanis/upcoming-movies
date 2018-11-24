@@ -14,6 +14,11 @@ protocol UpcomingMoviesServiceMappable {
 
 struct UpcomingMoviesServiceMapper: UpcomingMoviesServiceMappable {
     func mapToMovies(_ upcomingMoviesResponse: UpcomingMoviesResponse) -> Movies {
-        return []
+        return upcomingMoviesResponse.results.map {
+            Movie(id: $0.id,
+                  name: $0.title,
+                  iconPath: $0.posterPath,
+                  releaseDate: $0.releaseDate)
+        }
     }
 }

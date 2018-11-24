@@ -13,6 +13,6 @@ typealias Movies = [Movie]
 struct Movie {
     let id: String
     let name: String
-    let icon: UIImage
+    let iconPath: String
     let releaseDate: Date
 }

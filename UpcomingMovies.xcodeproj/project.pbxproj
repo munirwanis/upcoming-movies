@@ -51,6 +51,9 @@
 		A124212221A64E1100E18EB9 /* UpcomingMoviesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A124212121A64E1100E18EB9 /* UpcomingMoviesService.swift */; };
 		A124212421A6D45D00E18EB9 /* UpcomingMoviesServiceMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A124212321A6D45D00E18EB9 /* UpcomingMoviesServiceMapper.swift */; };
 		A124212721A75ED600E18EB9 /* ImageDownloadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A124212621A75ED600E18EB9 /* ImageDownloadService.swift */; };
+		A124213021A9589E00E18EB9 /* MovieDetailsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A124212F21A9589E00E18EB9 /* MovieDetailsResponse.swift */; };
+		A124213421A95AD700E18EB9 /* MovieDetailsServiceMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A124213321A95AD700E18EB9 /* MovieDetailsServiceMapper.swift */; };
+		A124213621A95BAB00E18EB9 /* MovieDetailsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A124213521A95BAB00E18EB9 /* MovieDetailsService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,6 +124,9 @@
 		A124212121A64E1100E18EB9 /* UpcomingMoviesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingMoviesService.swift; sourceTree = "<group>"; };
 		A124212321A6D45D00E18EB9 /* UpcomingMoviesServiceMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingMoviesServiceMapper.swift; sourceTree = "<group>"; };
 		A124212621A75ED600E18EB9 /* ImageDownloadService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloadService.swift; sourceTree = "<group>"; };
+		A124212F21A9589E00E18EB9 /* MovieDetailsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsResponse.swift; sourceTree = "<group>"; };
+		A124213321A95AD700E18EB9 /* MovieDetailsServiceMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsServiceMapper.swift; sourceTree = "<group>"; };
+		A124213521A95BAB00E18EB9 /* MovieDetailsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -364,6 +370,7 @@
 			isa = PBXGroup;
 			children = (
 				A124212521A75EC700E18EB9 /* ImageDownload */,
+				A124212D21A9587800E18EB9 /* MovieDetails */,
 				A124211D21A64BE800E18EB9 /* UpcomingMovies */,
 				A124210C21A4EC4500E18EB9 /* Commons */,
 			);
@@ -407,6 +414,24 @@
 				A124212621A75ED600E18EB9 /* ImageDownloadService.swift */,
 			);
 			path = ImageDownload;
+			sourceTree = "<group>";
+		};
+		A124212D21A9587800E18EB9 /* MovieDetails */ = {
+			isa = PBXGroup;
+			children = (
+				A124212E21A9588D00E18EB9 /* Model */,
+				A124213521A95BAB00E18EB9 /* MovieDetailsService.swift */,
+				A124213321A95AD700E18EB9 /* MovieDetailsServiceMapper.swift */,
+			);
+			path = MovieDetails;
+			sourceTree = "<group>";
+		};
+		A124212E21A9588D00E18EB9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A124212F21A9589E00E18EB9 /* MovieDetailsResponse.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -544,6 +569,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A124213621A95BAB00E18EB9 /* MovieDetailsService.swift in Sources */,
 				A124211521A4EC7000E18EB9 /* ParameterEncoding.swift in Sources */,
 				A124212021A64C0F00E18EB9 /* UpcomingMoviesResponse.swift in Sources */,
 				A12420FE21A4C9F300E18EB9 /* Movie.swift in Sources */,
@@ -552,6 +578,7 @@
 				A124210A21A4CC2000E18EB9 /* App.swift in Sources */,
 				A12420F521A4C4EC00E18EB9 /* Colors.swift in Sources */,
 				A124212721A75ED600E18EB9 /* ImageDownloadService.swift in Sources */,
+				A124213021A9589E00E18EB9 /* MovieDetailsResponse.swift in Sources */,
 				A12420F221A4C0BF00E18EB9 /* String+Extensions.swift in Sources */,
 				A12420ED21A4BFEB00E18EB9 /* NoConnectionViewController.swift in Sources */,
 				A12420F021A4C06E00E18EB9 /* Strings.swift in Sources */,
@@ -565,6 +592,7 @@
 				A12420E821A4BEFB00E18EB9 /* LoadingViewController.swift in Sources */,
 				A12420F921A4C64D00E18EB9 /* InternalOrServerErrorViewController.swift in Sources */,
 				A124212421A6D45D00E18EB9 /* UpcomingMoviesServiceMapper.swift in Sources */,
+				A124213421A95AD700E18EB9 /* MovieDetailsServiceMapper.swift in Sources */,
 				A124211A21A4EF7400E18EB9 /* AppError.swift in Sources */,
 				A124210621A4CB1F00E18EB9 /* MutedLogger.swift in Sources */,
 				A124211321A4EC7000E18EB9 /* JSON.swift in Sources */,
