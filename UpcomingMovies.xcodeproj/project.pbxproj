@@ -63,6 +63,7 @@
 		A124215021A9728200E18EB9 /* UpcomingMovieTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A124214E21A9728200E18EB9 /* UpcomingMovieTableViewCell.xib */; };
 		A1F2859321A9878300675011 /* CALayer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F2859221A9878300675011 /* CALayer+Extension.swift */; };
 		A1F2859521A9C20900675011 /* UIScrollView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F2859421A9C20900675011 /* UIScrollView+Extension.swift */; };
+		A1F2859821AA075800675011 /* Upcoming.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F2859721AA075800675011 /* Upcoming.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -145,6 +146,7 @@
 		A124214E21A9728200E18EB9 /* UpcomingMovieTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpcomingMovieTableViewCell.xib; sourceTree = "<group>"; };
 		A1F2859221A9878300675011 /* CALayer+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CALayer+Extension.swift"; sourceTree = "<group>"; };
 		A1F2859421A9C20900675011 /* UIScrollView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Extension.swift"; sourceTree = "<group>"; };
+		A1F2859721AA075800675011 /* Upcoming.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Upcoming.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -362,6 +364,7 @@
 				A124211921A4EF7400E18EB9 /* AppError.swift */,
 				A12420FD21A4C9F300E18EB9 /* Movie.swift */,
 				A12420FF21A4CA3100E18EB9 /* MovieDetails.swift */,
+				A1F2859721AA075800675011 /* Upcoming.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -687,6 +690,7 @@
 				A124210021A4CA3100E18EB9 /* MovieDetails.swift in Sources */,
 				A124214B21A96C2F00E18EB9 /* UpcomingMoviesMapper.swift in Sources */,
 				A124211421A4EC7000E18EB9 /* RESTVerb.swift in Sources */,
+				A1F2859821AA075800675011 /* Upcoming.swift in Sources */,
 				A124212221A64E1100E18EB9 /* UpcomingMoviesService.swift in Sources */,
 				A12420E821A4BEFB00E18EB9 /* LoadingViewController.swift in Sources */,
 				A12420F921A4C64D00E18EB9 /* InternalOrServerErrorViewController.swift in Sources */,

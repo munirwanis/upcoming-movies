@@ -11,6 +11,7 @@ import RxCocoa
 import RxSwift
 
 protocol UpcomingMoviesViewModeling {
+    var shouldLoadNextPage: Bool { get }
     func listUpcomingMovies() -> Observable<UpcomingMoviesState>
     func image(from path: String) -> SharedSequence<DriverSharingStrategy, UIImage>
 }
@@ -19,6 +20,8 @@ final class UpcomingMoviesViewModel {
     let mapper: UpcomingMoviesMappable
     let service: UpcomingMoviesServicing
     let imageService: ImageDownloadServicing
+    
+    var shouldLoadNextPage: Bool = true
     
     init(mapper: UpcomingMoviesMappable, service: UpcomingMoviesServicing, imageService: ImageDownloadServicing) {
         self.mapper = mapper
@@ -32,8 +35,9 @@ final class UpcomingMoviesViewModel {
 extension UpcomingMoviesViewModel: UpcomingMoviesViewModeling {
     func listUpcomingMovies() -> Observable<UpcomingMoviesState> {
         return service.listUpcomingMovies()
-            .map { [unowned self] movies in
-                self.mapper.mapToScreenState(movies)
+            .map { [unowned self] upcoming in
+                self.shouldLoadNextPage = upcoming.shouldLoadNextPage
+                return self.mapper.mapToScreenState(upcoming.movies)
             }
             .catchError { [unowned self] error -> Observable<UpcomingMoviesState> in
                 Observable.just(self.mapper.mapToScreenState(error))

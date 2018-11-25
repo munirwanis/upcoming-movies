@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 
 protocol UpcomingMoviesServicing {
-    func listUpcomingMovies() -> Observable<Movies>
+    func listUpcomingMovies() -> Observable<Upcoming>
 }
 
 final class UpcomingMoviesService: RESTService {
@@ -26,7 +26,7 @@ final class UpcomingMoviesService: RESTService {
 // MARK: - Service implementation
 
 extension UpcomingMoviesService: UpcomingMoviesServicing {
-    func listUpcomingMovies() -> Observable<Movies> {
+    func listUpcomingMovies() -> Observable<Upcoming> {
         let url = "\(App.shared.environment.url)/upcoming"
         let parameters: JSON = [
             "api_key": App.shared.environment.apiKey,
@@ -40,16 +40,19 @@ extension UpcomingMoviesService: UpcomingMoviesServicing {
                                      headers: nil)
         
         return request(with: apiRequest)
-            .map { [unowned self] (response: UpcomingMoviesResponse) -> Movies in
+            .map { [unowned self] (response: UpcomingMoviesResponse) -> Upcoming in
                 self.totalPages = response.totalPages
-                if self.totalPages == self.currentPage { return [] }
-                return self.mapper.mapToMovies(response)
+                return self.mapper.mapToUpcoming(response)
             }
-            .scan([]) { [unowned self] (previous, current) -> Movies in
+            .scan(Upcoming(movies: [], shouldLoadNextPage: true)) { [unowned self] (previous, current) -> Upcoming in
                 if self.currentPage < self.totalPages {
                     self.currentPage += 1
                 }
-                return previous + current
+                var nextMovies = Movies()
+                nextMovies.append(contentsOf: previous.movies)
+                nextMovies.append(contentsOf: current.movies)
+                let next = Upcoming(movies: nextMovies, shouldLoadNextPage: current.shouldLoadNextPage)
+                return next
         }
     }
 }

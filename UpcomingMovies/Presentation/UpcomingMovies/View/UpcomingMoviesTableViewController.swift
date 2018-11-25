@@ -58,8 +58,14 @@ extension UpcomingMoviesTableViewController {
         
         setupColors()
         setupTexts()
+        setupNavigation()
         
         handleUpcomingMovies()
+    }
+    
+    private func setupNavigation() {
+        let rightBarButton = UIBarButtonItem(customView: loadingIndicator)
+        navigationItem.setRightBarButton(rightBarButton, animated: true)
     }
     
     // MARK: - Colors
@@ -97,8 +103,10 @@ extension UpcomingMoviesTableViewController {
         }
         
         let contentOffsetObservable = tableView.rx.contentOffset
+            .throttle(0.3, scheduler: MainScheduler.instance)
             .flatMap { [unowned self] offset in
-                self.tableView.isNearBottomEdge(edgeOffset: 20.0) ? self.viewModel.listUpcomingMovies().startWith(.loading) : Observable.empty()
+                self.tableView.isNearBottomEdge() && self.viewModel.shouldLoadNextPage ?
+                    self.viewModel.listUpcomingMovies().startWith(.loading) : Observable.empty()
         }
         
         let firstLoadingObservable = viewModel.listUpcomingMovies().observeOn(MainScheduler.instance).startWith(.firstLoading)
