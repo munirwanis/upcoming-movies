@@ -86,6 +86,9 @@ extension UpcomingMoviesTableViewController {
 extension UpcomingMoviesTableViewController {
     private func handleUpcomingMovies() {
         upcomingMoviesSubject.asObserver()
+            .scan([]) { (previous, current) -> UpcomingMoviesModel in
+                previous + current
+            }
             .bind(to: tableView.rx.items(cellIdentifier: UpcomingMovieTableViewCell.identifier,
                                          cellType: UpcomingMovieTableViewCell.self)) { [unowned self] _, element, cell in
                                             cell.upcomingMovie = element
@@ -103,7 +106,8 @@ extension UpcomingMoviesTableViewController {
         }
         
         let contentOffsetObservable = tableView.rx.contentOffset
-            .throttle(0.3, scheduler: MainScheduler.instance)
+            .debounce(0.3, scheduler: MainScheduler.instance)
+            .skip(1) // skips the first from the loading
             .flatMap { [unowned self] offset in
                 self.tableView.isNearBottomEdge() && self.viewModel.shouldLoadNextPage ?
                     self.viewModel.listUpcomingMovies().startWith(.loading) : Observable.empty()
@@ -111,7 +115,8 @@ extension UpcomingMoviesTableViewController {
         
         let firstLoadingObservable = viewModel.listUpcomingMovies().observeOn(MainScheduler.instance).startWith(.firstLoading)
         
-        let viewState = Observable.merge(firstLoadingObservable, contentOffsetObservable, noConnectionRetryObservable).share()
+        let viewState = Observable.merge(firstLoadingObservable, noConnectionRetryObservable, contentOffsetObservable)
+            .share()
         
         viewState
             .subscribe(onNext: { [unowned self] state in self.render(state) })
@@ -123,6 +128,7 @@ extension UpcomingMoviesTableViewController {
         case let .succcess(upcomingMovies):
             hideLoading()
             upcomingMoviesSubject.onNext(upcomingMovies)
+            
         case let .error(state):
             hideLoading()
             render(state)

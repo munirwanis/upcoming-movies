@@ -16,7 +16,6 @@ protocol UpcomingMoviesServicing {
 final class UpcomingMoviesService: RESTService {
     let mapper: UpcomingMoviesServiceMappable
     var currentPage: Int = 1
-    var totalPages: Int = 1
     
     init(mapper: UpcomingMoviesServiceMappable) {
         self.mapper = mapper
@@ -41,18 +40,10 @@ extension UpcomingMoviesService: UpcomingMoviesServicing {
         
         return request(with: apiRequest)
             .map { [unowned self] (response: UpcomingMoviesResponse) -> Upcoming in
-                self.totalPages = response.totalPages
+                if self.currentPage < response.totalPages {
+                    self.currentPage = response.page + 1
+                }
                 return self.mapper.mapToUpcoming(response)
             }
-            .scan(Upcoming(movies: [], shouldLoadNextPage: true)) { [unowned self] (previous, current) -> Upcoming in
-                if self.currentPage < self.totalPages {
-                    self.currentPage += 1
-                }
-                var nextMovies = Movies()
-                nextMovies.append(contentsOf: previous.movies)
-                nextMovies.append(contentsOf: current.movies)
-                let next = Upcoming(movies: nextMovies, shouldLoadNextPage: current.shouldLoadNextPage)
-                return next
-        }
     }
 }
