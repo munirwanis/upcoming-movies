@@ -64,6 +64,8 @@
 		A1F2859321A9878300675011 /* CALayer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F2859221A9878300675011 /* CALayer+Extension.swift */; };
 		A1F2859521A9C20900675011 /* UIScrollView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F2859421A9C20900675011 /* UIScrollView+Extension.swift */; };
 		A1F2859821AA075800675011 /* Upcoming.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F2859721AA075800675011 /* Upcoming.swift */; };
+		A1F2859D21AB92C800675011 /* MovieTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F2859B21AB92C800675011 /* MovieTableViewController.swift */; };
+		A1F2859E21AB92C800675011 /* MovieTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1F2859C21AB92C800675011 /* MovieTableViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -147,6 +149,8 @@
 		A1F2859221A9878300675011 /* CALayer+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CALayer+Extension.swift"; sourceTree = "<group>"; };
 		A1F2859421A9C20900675011 /* UIScrollView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Extension.swift"; sourceTree = "<group>"; };
 		A1F2859721AA075800675011 /* Upcoming.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Upcoming.swift; sourceTree = "<group>"; };
+		A1F2859B21AB92C800675011 /* MovieTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewController.swift; sourceTree = "<group>"; };
+		A1F2859C21AB92C800675011 /* MovieTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieTableViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -354,6 +358,7 @@
 			isa = PBXGroup;
 			children = (
 				A124213721A95E1700E18EB9 /* UpcomingMovies */,
+				A1F2859921AB929500675011 /* Movie */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -504,6 +509,23 @@
 			path = UpcomingMovieCell;
 			sourceTree = "<group>";
 		};
+		A1F2859921AB929500675011 /* Movie */ = {
+			isa = PBXGroup;
+			children = (
+				A1F2859A21AB929F00675011 /* View */,
+			);
+			path = Movie;
+			sourceTree = "<group>";
+		};
+		A1F2859A21AB929F00675011 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A1F2859B21AB92C800675011 /* MovieTableViewController.swift */,
+				A1F2859C21AB92C800675011 /* MovieTableViewController.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -613,6 +635,7 @@
 				A12420D421A4BA7E00E18EB9 /* Localizable.strings in Resources */,
 				A124213E21A95F5D00E18EB9 /* UpcomingMoviesTableViewController.xib in Resources */,
 				A12420FA21A4C64D00E18EB9 /* InternalOrServerErrorViewController.xib in Resources */,
+				A1F2859E21AB92C800675011 /* MovieTableViewController.xib in Resources */,
 				A124209F21A49F0700E18EB9 /* Assets.xcassets in Resources */,
 				A12420E721A4BEFB00E18EB9 /* LoadingViewController.xib in Resources */,
 				A124215021A9728200E18EB9 /* UpcomingMovieTableViewCell.xib in Resources */,
@@ -676,6 +699,7 @@
 				A12420D821A4BCF200E18EB9 /* Observable+Extension.swift in Sources */,
 				A1F2859521A9C20900675011 /* UIScrollView+Extension.swift in Sources */,
 				A124210A21A4CC2000E18EB9 /* App.swift in Sources */,
+				A1F2859D21AB92C800675011 /* MovieTableViewController.swift in Sources */,
 				A124214F21A9728200E18EB9 /* UpcomingMovieTableViewCell.swift in Sources */,
 				A12420F521A4C4EC00E18EB9 /* Colors.swift in Sources */,
 				A124212721A75ED600E18EB9 /* ImageDownloadService.swift in Sources */,

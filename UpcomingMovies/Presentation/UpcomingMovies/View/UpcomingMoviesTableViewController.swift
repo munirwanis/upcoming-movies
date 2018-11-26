@@ -51,17 +51,24 @@ extension UpcomingMoviesTableViewController {
 
 extension UpcomingMoviesTableViewController {
     private func setup() {
-        tableView.rx.setDelegate(self).disposed(by: bag)
-        tableView.register(cellNib: UpcomingMovieTableViewCell.self)
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 350
-        
+        setupTableView()
         setupColors()
         setupTexts()
         setupNavigation()
         
         handleUpcomingMovies()
     }
+    
+    // MARK: - TableView
+    
+    private func setupTableView() {
+        tableView.rx.setDelegate(self).disposed(by: bag)
+        tableView.register(cellNib: UpcomingMovieTableViewCell.self)
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 350
+    }
+    
+    // MARK: - Navigation
     
     private func setupNavigation() {
         let rightBarButton = UIBarButtonItem(customView: loadingIndicator)
