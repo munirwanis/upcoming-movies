@@ -1,5 +1,5 @@
 //
-//  MovieTableViewCell.swift
+//  TitleCellTableViewCell.swift
 //  UpcomingMovies
 //
 //  Created by Munir Wanis on 2018-11-26.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class MovieTableViewCell: UITableViewCell {
+final class TitleCellTableViewCell: UITableViewCell {
     @IBOutlet private var label: UILabel!
     
     var titleText: String? {
@@ -16,7 +16,7 @@ final class MovieTableViewCell: UITableViewCell {
             label.text = titleText
         }
     }
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -26,5 +26,4 @@ final class MovieTableViewCell: UITableViewCell {
     private func setup() {
         backgroundColor = Colors.General.darkBlue
         label.textColor = Colors.Text.white
-    }
-}
+    }}

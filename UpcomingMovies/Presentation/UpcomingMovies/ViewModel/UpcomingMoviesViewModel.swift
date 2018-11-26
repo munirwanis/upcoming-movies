@@ -15,6 +15,7 @@ protocol UpcomingMoviesViewModeling {
     func listUpcomingMovies() -> Observable<UpcomingMoviesState>
     func backdropImage(from path: String) -> SharedSequence<DriverSharingStrategy, UIImage>
     func posterImage(from path: String) -> SharedSequence<DriverSharingStrategy, UIImage>
+    func retrieveEvent(from upcoming: UpcomingMovieModel, with images: (posterImage: UIImage?, backdropImage: UIImage?)) -> MovieModel
 }
 
 final class UpcomingMoviesViewModel {
@@ -51,5 +52,9 @@ extension UpcomingMoviesViewModel: UpcomingMoviesViewModeling {
     
     func posterImage(from path: String) -> SharedSequence<DriverSharingStrategy, UIImage> {
         return imageService.poster(size: .medium, in: path).observeOn(MainScheduler.instance).asDriver(onErrorJustReturn: #imageLiteral(resourceName: "internalErrorIcon"))
+    }
+    
+    func retrieveEvent(from upcoming: UpcomingMovieModel, with images: (posterImage: UIImage?, backdropImage: UIImage?)) -> MovieModel {
+        return mapper.mapToMovieModel(upcoming, with: images)
     }
 }

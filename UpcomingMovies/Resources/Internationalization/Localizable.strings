@@ -16,3 +16,7 @@
 "upcoming-movies-release-date" = "Release date:";
 "upcoming-movies-genres" = "Genres:";
 "upcoming-movies-title" = "Upcoming Movies";
+
+"movie-overview" = "Overview";
+"movie-release-date" = "Release date";
+"movie-genres" = "Genres";

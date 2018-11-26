@@ -6,7 +6,7 @@
 //  Copyright © 2018 Wanis Co. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 final class App {
     private init() {
@@ -20,8 +20,12 @@ final class App {
     static let shared = App()
     let log: Logger
     let environment: Environment = .init(type: .production)
+    private var coordinator: AppCoordinator?
 }
 
 extension App {
-    func start() {}
+    func start(window: UIWindow) {
+        coordinator = AppCoordinator(window: window)
+        coordinator?.start()
+    }
 }

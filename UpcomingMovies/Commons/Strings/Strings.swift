@@ -11,6 +11,14 @@ import Foundation
 struct Strings {
     private init() {}
     
+    struct Movie {
+        private init() {}
+        
+        static let overview = "movie-overview".localized
+        static let releaseDate = "movie-release-date".localized
+        static let genres = "movie-genres".localized
+    }
+    
     struct UpcomingMovies {
         private init() {}
         

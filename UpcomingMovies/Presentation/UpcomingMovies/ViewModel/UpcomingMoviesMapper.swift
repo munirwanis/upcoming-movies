@@ -6,11 +6,12 @@
 //  Copyright © 2018 Wanis Co. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 protocol UpcomingMoviesMappable {
     func mapToScreenState(_ movies: Movies) -> UpcomingMoviesState
     func mapToScreenState(_ error: Error) -> UpcomingMoviesState
+    func mapToMovieModel(_ upcoming: UpcomingMovieModel, with images: (posterImage: UIImage?, backdropImage: UIImage?)) -> MovieModel
 }
 
 struct UpcomingMoviesMapper: UpcomingMoviesMappable {
@@ -24,6 +25,15 @@ struct UpcomingMoviesMapper: UpcomingMoviesMappable {
         case .none: return .error(.general)
         case .some(let appError): return .error(mapToUpcomingMoviesErrorState(appError))
         }
+    }
+    
+    func mapToMovieModel(_ upcoming: UpcomingMovieModel, with images: (posterImage: UIImage?, backdropImage: UIImage?)) -> MovieModel {
+        return MovieModel(name: upcoming.name,
+                          iconImage: images.posterImage,
+                          backdropImage: images.backdropImage,
+                          releaseDate: upcoming.releaseDate,
+                          genres: upcoming.genres,
+                          overview: upcoming.overview)
     }
 }
 

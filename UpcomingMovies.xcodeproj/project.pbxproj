@@ -74,6 +74,13 @@
 		A1F285B321ABB3EB00675011 /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F285B121ABB3EB00675011 /* MovieTableViewCell.swift */; };
 		A1F285B421ABB3EB00675011 /* MovieTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1F285B221ABB3EB00675011 /* MovieTableViewCell.xib */; };
 		A1F285B721ABB60700675011 /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F285B621ABB60700675011 /* MovieModel.swift */; };
+		A1F285BF21ABBDB800675011 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F285BA21ABBDB800675011 /* AppCoordinator.swift */; };
+		A1F285C021ABBDB800675011 /* AppEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F285BB21ABBDB800675011 /* AppEvent.swift */; };
+		A1F285C121ABBDB800675011 /* Coordinatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F285BC21ABBDB800675011 /* Coordinatable.swift */; };
+		A1F285C221ABBDB800675011 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F285BD21ABBDB800675011 /* Coordinator.swift */; };
+		A1F285C421ABBDE800675011 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F285C321ABBDE700675011 /* UIViewController+Extension.swift */; };
+		A1F285C821ABCD4000675011 /* TitleCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F285C621ABCD4000675011 /* TitleCellTableViewCell.swift */; };
+		A1F285C921ABCD4000675011 /* TitleCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1F285C721ABCD4000675011 /* TitleCellTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -167,6 +174,13 @@
 		A1F285B121ABB3EB00675011 /* MovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
 		A1F285B221ABB3EB00675011 /* MovieTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieTableViewCell.xib; sourceTree = "<group>"; };
 		A1F285B621ABB60700675011 /* MovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieModel.swift; sourceTree = "<group>"; };
+		A1F285BA21ABBDB800675011 /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		A1F285BB21ABBDB800675011 /* AppEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppEvent.swift; sourceTree = "<group>"; };
+		A1F285BC21ABBDB800675011 /* Coordinatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinatable.swift; sourceTree = "<group>"; };
+		A1F285BD21ABBDB800675011 /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		A1F285C321ABBDE700675011 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		A1F285C621ABCD4000675011 /* TitleCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleCellTableViewCell.swift; sourceTree = "<group>"; };
+		A1F285C721ABCD4000675011 /* TitleCellTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TitleCellTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -298,6 +312,7 @@
 		A12420D521A4BC4000E18EB9 /* Commons */ = {
 			isa = PBXGroup;
 			children = (
+				A1F285B821ABBDB800675011 /* Coordinators */,
 				A12420F321A4C4E000E18EB9 /* Colors */,
 				A12420D621A4BC4B00E18EB9 /* Extensions */,
 				A12420EE21A4C05B00E18EB9 /* Strings */,
@@ -317,6 +332,7 @@
 				A12420D721A4BCF200E18EB9 /* Observable+Extension.swift */,
 				A12420F121A4C0BF00E18EB9 /* String+Extensions.swift */,
 				A1F2859421A9C20900675011 /* UIScrollView+Extension.swift */,
+				A1F285C321ABBDE700675011 /* UIViewController+Extension.swift */,
 				A1F285A121AB98F500675011 /* UIView+Blur.swift */,
 			);
 			path = Extensions;
@@ -543,6 +559,7 @@
 			isa = PBXGroup;
 			children = (
 				A1F285B521ABB5EA00675011 /* Model */,
+				A1F285C521ABCD2A00675011 /* TitleCell */,
 				A1F285B021ABB3D300675011 /* MovieCell */,
 				A1F2859B21AB92C800675011 /* MovieTableViewController.swift */,
 				A1F2859C21AB92C800675011 /* MovieTableViewController.xib */,
@@ -590,6 +607,26 @@
 				A1F285B621ABB60700675011 /* MovieModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		A1F285B821ABBDB800675011 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				A1F285BA21ABBDB800675011 /* AppCoordinator.swift */,
+				A1F285BB21ABBDB800675011 /* AppEvent.swift */,
+				A1F285BC21ABBDB800675011 /* Coordinatable.swift */,
+				A1F285BD21ABBDB800675011 /* Coordinator.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		A1F285C521ABCD2A00675011 /* TitleCell */ = {
+			isa = PBXGroup;
+			children = (
+				A1F285C621ABCD4000675011 /* TitleCellTableViewCell.swift */,
+				A1F285C721ABCD4000675011 /* TitleCellTableViewCell.xib */,
+			);
+			path = TitleCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -707,6 +744,7 @@
 				A12420E721A4BEFB00E18EB9 /* LoadingViewController.xib in Resources */,
 				A124215021A9728200E18EB9 /* UpcomingMovieTableViewCell.xib in Resources */,
 				A12420EC21A4BFEB00E18EB9 /* NoConnectionViewController.xib in Resources */,
+				A1F285C921ABCD4000675011 /* TitleCellTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -759,10 +797,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1F285C421ABBDE800675011 /* UIViewController+Extension.swift in Sources */,
 				A124213621A95BAB00E18EB9 /* MovieDetailsService.swift in Sources */,
 				A124214021A960D600E18EB9 /* UpcomingMoviesViewModel.swift in Sources */,
+				A1F285BF21ABBDB800675011 /* AppCoordinator.swift in Sources */,
 				A1F285B321ABB3EB00675011 /* MovieTableViewCell.swift in Sources */,
 				A124211521A4EC7000E18EB9 /* ParameterEncoding.swift in Sources */,
+				A1F285C821ABCD4000675011 /* TitleCellTableViewCell.swift in Sources */,
 				A124212021A64C0F00E18EB9 /* UpcomingMoviesResponse.swift in Sources */,
 				A12420FE21A4C9F300E18EB9 /* Movie.swift in Sources */,
 				A124210821A4CB1F00E18EB9 /* DebugLogger.swift in Sources */,
@@ -787,11 +828,14 @@
 				A124214B21A96C2F00E18EB9 /* UpcomingMoviesMapper.swift in Sources */,
 				A124211421A4EC7000E18EB9 /* RESTVerb.swift in Sources */,
 				A1F2859821AA075800675011 /* Upcoming.swift in Sources */,
+				A1F285C221ABBDB800675011 /* Coordinator.swift in Sources */,
 				A124212221A64E1100E18EB9 /* UpcomingMoviesService.swift in Sources */,
 				A12420E821A4BEFB00E18EB9 /* LoadingViewController.swift in Sources */,
 				A12420F921A4C64D00E18EB9 /* InternalOrServerErrorViewController.swift in Sources */,
 				A124212421A6D45D00E18EB9 /* UpcomingMoviesServiceMapper.swift in Sources */,
+				A1F285C121ABBDB800675011 /* Coordinatable.swift in Sources */,
 				A1F285AF21ABA24300675011 /* GenresResponse.swift in Sources */,
+				A1F285C021ABBDB800675011 /* AppEvent.swift in Sources */,
 				A124213421A95AD700E18EB9 /* MovieDetailsServiceMapper.swift in Sources */,
 				A124214221A9619400E18EB9 /* UpcomingMoviesState.swift in Sources */,
 				A124211A21A4EF7400E18EB9 /* AppError.swift in Sources */,

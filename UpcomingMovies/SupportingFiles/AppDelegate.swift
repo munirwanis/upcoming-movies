@@ -13,22 +13,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        App.shared.start()
-        
-        let mapper = UpcomingMoviesMapper()
-        let genresDatabase = GenresDatabase()
-        let upcomingMoviesServiceMapper = UpcomingMoviesServiceMapper(database: genresDatabase)
-        let upcomingMoviesService = UpcomingMoviesService(mapper: upcomingMoviesServiceMapper)
-        let imageService = ImageDownloadService()
-        let viewModel = UpcomingMoviesViewModel(mapper: mapper, service: upcomingMoviesService, imageService: imageService)
-        let controller = UpcomingMoviesTableViewController(viewModel: viewModel)
-        
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = UIColor.white
-        window?.rootViewController = UINavigationController(rootViewController: controller)
-        window?.makeKeyAndVisible()
+        
+        App.shared.start(window: window!)
         return true
     }
 

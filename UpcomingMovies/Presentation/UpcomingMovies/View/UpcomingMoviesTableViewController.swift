@@ -65,6 +65,8 @@ extension UpcomingMoviesTableViewController {
         setupNavigation()
         
         handleUpcomingMovies()
+        handleTableViewItems()
+        handleTableViewItemSelected()
     }
     
     // MARK: - TableView
@@ -81,6 +83,13 @@ extension UpcomingMoviesTableViewController {
     private func setupNavigation() {
         let rightBarButton = UIBarButtonItem(customView: loadingIndicator)
         navigationItem.setRightBarButton(rightBarButton, animated: true)
+        
+        navigationController?.navigationBar.isTranslucent = false
+        navigationController?.navigationBar.barTintColor = Colors.General.darkBlue
+        navigationController?.navigationBar.tintColor = Colors.Text.white
+        self.navigationController?.navigationBar.titleTextAttributes = [
+            NSAttributedString.Key.foregroundColor: Colors.Text.white
+        ]
     }
     
     // MARK: - Colors
@@ -99,7 +108,7 @@ extension UpcomingMoviesTableViewController {
 // MARK: - Handlers
 
 extension UpcomingMoviesTableViewController {
-    private func handleUpcomingMovies() {
+    private func handleTableViewItems() {
         upcomingMoviesSubject.asObserver()
             .scan([]) { (previous, current) -> UpcomingMoviesModel in
                 previous + current
@@ -119,22 +128,25 @@ extension UpcomingMoviesTableViewController {
                                                 .disposed(by: cell.bag)
             }
             .disposed(by: self.bag)
-        
+    }
+    
+    private func handleTableViewItemSelected() {
         tableView.rx.itemSelected
             .subscribe(onNext: { [unowned self] indexPath in
                 let cell = self.tableView.cellForRow(at: indexPath) as? UpcomingMovieTableViewCell
                 guard let upcoming = cell?.upcomingMovie else { return }
-                let movie = MovieModel(name: upcoming.name,
-                                       iconImage: cell?.movieIcon,
-                                       backdropImage: cell?.movieBackdrop,
-                                       releaseDate: upcoming.releaseDate,
-                                       genres: upcoming.genres,
-                                       overview: upcoming.overview)
-                let controller = MovieTableViewController(movie: movie)
-                self.navigationController?.pushViewController(controller, animated: true)
+                let movie = self.viewModel.retrieveEvent(from: upcoming, with: (cell?.movieIcon, cell?.movieBackdrop))
+                do {
+                    try self.parentCoordinator?.handle(event: movie)
+                } catch {
+                    App.shared.log.error("Could not handle event", error: error)
+                    self.showErrorView()
+                }
             })
             .disposed(by: bag)
-        
+    }
+    
+    private func handleUpcomingMovies() {
         let noConnectionRetryObservable = noConnectionView.retryButtonTap.flatMap { [unowned self] _ -> Observable<UpcomingMoviesState> in
             self.noConnectionView.hide()
             return self.viewModel.listUpcomingMovies().startWith(.firstLoading)

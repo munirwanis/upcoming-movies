@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct MovieModel {
+struct MovieModel: AppEvent {
     let name: String
     let iconImage: UIImage?
     let backdropImage: UIImage?
