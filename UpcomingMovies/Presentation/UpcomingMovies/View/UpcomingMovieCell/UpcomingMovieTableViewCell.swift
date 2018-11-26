@@ -33,6 +33,8 @@ final class UpcomingMovieTableViewCell: UITableViewCell {
             posterImageView.image = movieIcon
         }
     }
+    
+    var movieBackdrop: UIImage?
 
     override func awakeFromNib() {
         super.awakeFromNib()

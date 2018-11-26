@@ -14,6 +14,7 @@ struct Movie {
     let id: Int
     let name: String
     let iconPath: String?
+    let backdropPath: String?
     let releaseDate: Date
     let overview: String
     let genres: [String]

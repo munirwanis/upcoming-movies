@@ -34,6 +34,7 @@ struct UpcomingMoviesServiceMapper: UpcomingMoviesServiceMappable {
             return Movie(id: upcomingMovie.id,
                          name: upcomingMovie.title,
                          iconPath: upcomingMovie.posterPath,
+                         backdropPath: upcomingMovie.backdropPath,
                          releaseDate: upcomingMovie.releaseDate,
                          overview: upcomingMovie.overview,
                          genres: genresFound)

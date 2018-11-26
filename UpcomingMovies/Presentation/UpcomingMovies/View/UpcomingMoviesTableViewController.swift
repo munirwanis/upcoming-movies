@@ -107,9 +107,14 @@ extension UpcomingMoviesTableViewController {
             .bind(to: tableView.rx.items(cellIdentifier: UpcomingMovieTableViewCell.identifier,
                                          cellType: UpcomingMovieTableViewCell.self)) { [unowned self] _, element, cell in
                                             cell.upcomingMovie = element
-                                            self.viewModel.image(from: element.iconPath ?? "")
+                                            self.viewModel.posterImage(from: element.iconPath ?? "")
                                                 .drive(onNext: { image in
                                                     cell.movieIcon = image
+                                                })
+                                                .disposed(by: cell.bag)
+                                            self.viewModel.backdropImage(from: element.backdropPath ?? "")
+                                                .drive(onNext: { image in
+                                                    cell.movieBackdrop = image
                                                 })
                                                 .disposed(by: cell.bag)
             }

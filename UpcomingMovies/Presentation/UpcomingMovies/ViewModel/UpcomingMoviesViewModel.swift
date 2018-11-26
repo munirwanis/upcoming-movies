@@ -13,7 +13,8 @@ import RxSwift
 protocol UpcomingMoviesViewModeling {
     var shouldLoadNextPage: Bool { get }
     func listUpcomingMovies() -> Observable<UpcomingMoviesState>
-    func image(from path: String) -> SharedSequence<DriverSharingStrategy, UIImage>
+    func backdropImage(from path: String) -> SharedSequence<DriverSharingStrategy, UIImage>
+    func posterImage(from path: String) -> SharedSequence<DriverSharingStrategy, UIImage>
 }
 
 final class UpcomingMoviesViewModel {
@@ -44,7 +45,11 @@ extension UpcomingMoviesViewModel: UpcomingMoviesViewModeling {
         }
     }
     
-    func image(from path: String) -> SharedSequence<DriverSharingStrategy, UIImage> {
+    func backdropImage(from path: String) -> SharedSequence<DriverSharingStrategy, UIImage> {
         return imageService.backdrop(size: .medium, in: path).observeOn(MainScheduler.instance).asDriver(onErrorJustReturn: #imageLiteral(resourceName: "internalErrorIcon"))
+    }
+    
+    func posterImage(from path: String) -> SharedSequence<DriverSharingStrategy, UIImage> {
+        return imageService.poster(size: .medium, in: path).observeOn(MainScheduler.instance).asDriver(onErrorJustReturn: #imageLiteral(resourceName: "internalErrorIcon"))
     }
 }
