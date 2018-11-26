@@ -15,4 +15,5 @@ struct UpcomingMovieModel {
     let name: String
     let iconPath: String?
     let releaseDate: String
+    let genres: [String]
 }

@@ -9,18 +9,34 @@
 import Foundation
 
 protocol UpcomingMoviesServiceMappable {
-    func mapToUpcoming(_ upcomingMoviesResponse: UpcomingMoviesResponse) -> Upcoming
+    func mapToUpcoming(_ upcomingMoviesResponse: UpcomingMoviesResponse) throws -> Upcoming
 }
 
 struct UpcomingMoviesServiceMapper: UpcomingMoviesServiceMappable {
-    func mapToUpcoming(_ upcomingMoviesResponse: UpcomingMoviesResponse) -> Upcoming {
+    let genreDatabase: GenresDatabasing
+    
+    init(database: GenresDatabasing) {
+        self.genreDatabase = database
+    }
+    
+    func mapToUpcoming(_ upcomingMoviesResponse: UpcomingMoviesResponse) throws -> Upcoming {
+        let genres = try genreDatabase.listGenres().genres
+        
         let shouldLoadNextPage = upcomingMoviesResponse.page < upcomingMoviesResponse.totalPages
-        let movies = upcomingMoviesResponse.results.compactMap {
-            Movie(id: $0.id,
-                  name: $0.title,
-                  iconPath: $0.posterPath,
-                  releaseDate: $0.releaseDate,
-                  overview: $0.overview)
+        
+        let movies: Movies = upcomingMoviesResponse.results.compactMap { upcomingMovie in
+            var genresFound = [String]()
+            
+            upcomingMovie.genreIds.forEach { id in
+                genresFound.append(contentsOf: genres.filter { genre in genre.id == id }.map { genre in genre.name })
+            }
+            
+            return Movie(id: upcomingMovie.id,
+                         name: upcomingMovie.title,
+                         iconPath: upcomingMovie.posterPath,
+                         releaseDate: upcomingMovie.releaseDate,
+                         overview: upcomingMovie.overview,
+                         genres: genresFound)
         }
         
         return Upcoming(movies: movies, shouldLoadNextPage: shouldLoadNextPage)

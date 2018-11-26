@@ -8,13 +8,11 @@
 
 import Foundation
 
-typealias Genres = [MovieDetailsResponse.Genre]
-
 struct MovieDetailsResponse: Decodable {
     let title: String
     let posterPath: String
     let backdropPath: String
-    let genres: Genres
+    let genres: [MovieDetailsResponse.Genre]
     let overview: String
     let releaseDate: Date
     

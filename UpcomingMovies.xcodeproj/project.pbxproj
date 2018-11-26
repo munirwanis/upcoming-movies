@@ -66,6 +66,11 @@
 		A1F2859821AA075800675011 /* Upcoming.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F2859721AA075800675011 /* Upcoming.swift */; };
 		A1F2859D21AB92C800675011 /* MovieTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F2859B21AB92C800675011 /* MovieTableViewController.swift */; };
 		A1F2859E21AB92C800675011 /* MovieTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1F2859C21AB92C800675011 /* MovieTableViewController.xib */; };
+		A1F285A021AB947600675011 /* ParallaxHeader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1F2859F21AB947600675011 /* ParallaxHeader.framework */; };
+		A1F285A221AB98F500675011 /* UIView+Blur.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F285A121AB98F500675011 /* UIView+Blur.swift */; };
+		A1F285A421AB9A2D00675011 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1F285A321AB9A2D00675011 /* SnapKit.framework */; };
+		A1F285AA21ABA1A000675011 /* GenresDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F285A921ABA1A000675011 /* GenresDatabase.swift */; };
+		A1F285AF21ABA24300675011 /* GenresResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F285AE21ABA24300675011 /* GenresResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -151,6 +156,11 @@
 		A1F2859721AA075800675011 /* Upcoming.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Upcoming.swift; sourceTree = "<group>"; };
 		A1F2859B21AB92C800675011 /* MovieTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewController.swift; sourceTree = "<group>"; };
 		A1F2859C21AB92C800675011 /* MovieTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieTableViewController.xib; sourceTree = "<group>"; };
+		A1F2859F21AB947600675011 /* ParallaxHeader.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParallaxHeader.framework; path = Carthage/Build/iOS/ParallaxHeader.framework; sourceTree = "<group>"; };
+		A1F285A121AB98F500675011 /* UIView+Blur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Blur.swift"; sourceTree = "<group>"; };
+		A1F285A321AB9A2D00675011 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
+		A1F285A921ABA1A000675011 /* GenresDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenresDatabase.swift; sourceTree = "<group>"; };
+		A1F285AE21ABA24300675011 /* GenresResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenresResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +173,8 @@
 				A12420CD21A4ABA200E18EB9 /* RxSwift.framework in Frameworks */,
 				A12420CE21A4ABA200E18EB9 /* RxAlamofire.framework in Frameworks */,
 				A12420CF21A4ABA200E18EB9 /* Alamofire.framework in Frameworks */,
+				A1F285A021AB947600675011 /* ParallaxHeader.framework in Frameworks */,
+				A1F285A421AB9A2D00675011 /* SnapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -238,6 +250,8 @@
 		A12420C521A4ABA200E18EB9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A1F285A321AB9A2D00675011 /* SnapKit.framework */,
+				A1F2859F21AB947600675011 /* ParallaxHeader.framework */,
 				A12420CA21A4ABA200E18EB9 /* Alamofire.framework */,
 				A12420C621A4ABA200E18EB9 /* AlamofireImage.framework */,
 				A12420C921A4ABA200E18EB9 /* RxAlamofire.framework */,
@@ -297,6 +311,7 @@
 				A12420D721A4BCF200E18EB9 /* Observable+Extension.swift */,
 				A12420F121A4C0BF00E18EB9 /* String+Extensions.swift */,
 				A1F2859421A9C20900675011 /* UIScrollView+Extension.swift */,
+				A1F285A121AB98F500675011 /* UIView+Blur.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -377,6 +392,7 @@
 		A124210121A4CAFD00E18EB9 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				A1F285A521ABA15600675011 /* Database */,
 				A124210B21A4EC3400E18EB9 /* Networking */,
 				A124210221A4CB0100E18EB9 /* Logger */,
 			);
@@ -526,6 +542,31 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		A1F285A521ABA15600675011 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				A1F285A621ABA16B00675011 /* Genres */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
+		A1F285A621ABA16B00675011 /* Genres */ = {
+			isa = PBXGroup;
+			children = (
+				A1F285AD21ABA22600675011 /* Model */,
+				A1F285A921ABA1A000675011 /* GenresDatabase.swift */,
+			);
+			path = Genres;
+			sourceTree = "<group>";
+		};
+		A1F285AD21ABA22600675011 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A1F285AE21ABA24300675011 /* GenresResponse.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -673,6 +714,8 @@
 				"$(SRCROOT)/Carthage/Build/iOS/AlamofireImage.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxAlamofire.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/ParallaxHeader.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SnapKit.framework",
 			);
 			name = "Carthage Script";
 			outputFileListPaths = (
@@ -704,6 +747,7 @@
 				A12420F521A4C4EC00E18EB9 /* Colors.swift in Sources */,
 				A124212721A75ED600E18EB9 /* ImageDownloadService.swift in Sources */,
 				A124213021A9589E00E18EB9 /* MovieDetailsResponse.swift in Sources */,
+				A1F285AA21ABA1A000675011 /* GenresDatabase.swift in Sources */,
 				A12420F221A4C0BF00E18EB9 /* String+Extensions.swift in Sources */,
 				A12420ED21A4BFEB00E18EB9 /* NoConnectionViewController.swift in Sources */,
 				A12420F021A4C06E00E18EB9 /* Strings.swift in Sources */,
@@ -719,10 +763,12 @@
 				A12420E821A4BEFB00E18EB9 /* LoadingViewController.swift in Sources */,
 				A12420F921A4C64D00E18EB9 /* InternalOrServerErrorViewController.swift in Sources */,
 				A124212421A6D45D00E18EB9 /* UpcomingMoviesServiceMapper.swift in Sources */,
+				A1F285AF21ABA24300675011 /* GenresResponse.swift in Sources */,
 				A124213421A95AD700E18EB9 /* MovieDetailsServiceMapper.swift in Sources */,
 				A124214221A9619400E18EB9 /* UpcomingMoviesState.swift in Sources */,
 				A124211A21A4EF7400E18EB9 /* AppError.swift in Sources */,
 				A124210621A4CB1F00E18EB9 /* MutedLogger.swift in Sources */,
+				A1F285A221AB98F500675011 /* UIView+Blur.swift in Sources */,
 				A124211321A4EC7000E18EB9 /* JSON.swift in Sources */,
 				A12420E221A4BE1300E18EB9 /* NibCreatable.swift in Sources */,
 				A124211C21A4F73200E18EB9 /* Environment.swift in Sources */,

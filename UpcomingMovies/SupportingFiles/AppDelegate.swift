@@ -18,7 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         App.shared.start()
         
         let mapper = UpcomingMoviesMapper()
-        let upcomingMoviesServiceMapper = UpcomingMoviesServiceMapper()
+        let genresDatabase = GenresDatabase()
+        let upcomingMoviesServiceMapper = UpcomingMoviesServiceMapper(database: genresDatabase)
         let upcomingMoviesService = UpcomingMoviesService(mapper: upcomingMoviesServiceMapper)
         let imageService = ImageDownloadService()
         let viewModel = UpcomingMoviesViewModel(mapper: mapper, service: upcomingMoviesService, imageService: imageService)

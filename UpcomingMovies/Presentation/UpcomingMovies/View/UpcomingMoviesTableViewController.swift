@@ -45,6 +45,14 @@ extension UpcomingMoviesTableViewController {
         
         setup()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let indexPath = tableView.indexPathForSelectedRow {
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
+    }
 }
 
 // MARK: - Setup
@@ -106,6 +114,14 @@ extension UpcomingMoviesTableViewController {
                                                 .disposed(by: cell.bag)
             }
             .disposed(by: self.bag)
+        
+        tableView.rx.itemSelected
+            .subscribe(onNext: { [unowned self] indexPath in
+                let _ = self.tableView.cellForRow(at: indexPath) as? UpcomingMovieTableViewCell
+                let controller = MovieTableViewController()
+                self.navigationController?.pushViewController(controller, animated: true)
+            })
+            .disposed(by: bag)
         
         let noConnectionRetryObservable = noConnectionView.retryButtonTap.flatMap { [unowned self] _ -> Observable<UpcomingMoviesState> in
             self.noConnectionView.hide()

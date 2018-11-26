@@ -43,7 +43,11 @@ extension UpcomingMoviesService: UpcomingMoviesServicing {
                 if self.currentPage < response.totalPages {
                     self.currentPage = response.page + 1
                 }
-                return self.mapper.mapToUpcoming(response)
+                do {
+                    return try self.mapper.mapToUpcoming(response)
+                } catch {
+                    throw AppError.serialization
+                }
             }
     }
 }

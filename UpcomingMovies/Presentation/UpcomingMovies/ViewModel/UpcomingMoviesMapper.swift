@@ -38,7 +38,8 @@ extension UpcomingMoviesMapper {
             UpcomingMovieModel(id: $0.id,
                                name: $0.name,
                                iconPath: $0.iconPath,
-                               releaseDate: dateFormatter.string(from: $0.releaseDate))
+                               releaseDate: dateFormatter.string(from: $0.releaseDate),
+                               genres: $0.genres)
         }
     }
     

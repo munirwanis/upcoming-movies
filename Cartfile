@@ -2,3 +2,5 @@ github "Alamofire/Alamofire" ~> 4.7
 github "Alamofire/AlamofireImage" ~> 3.4
 github "RxSwiftCommunity/RxAlamofire" ~> 4.3
 github "ReactiveX/RxSwift" ~> 4.4
+github "phimage/ParallaxHeader" ~> 2.0
+github "SnapKit/SnapKit" ~> 4.2
