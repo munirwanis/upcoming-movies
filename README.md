@@ -4,7 +4,7 @@
 
 | List | Movie | Video |
 | - | - | - |
-| ![photo1](./Screenshots/photo1) | ![photo2](./Screenshots/photo2) | ![video1](./Screenshots/video1) |
+| ![photo1](./Screenshots/photo1.png) | ![photo2](./Screenshots/photo2.png) | ![video1](./Screenshots/video1.gif) |
 
 ## Build instructions
 
