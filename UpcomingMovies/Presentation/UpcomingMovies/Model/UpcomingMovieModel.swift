@@ -17,4 +17,5 @@ struct UpcomingMovieModel {
     let backdropPath: String?
     let releaseDate: String
     let genres: [String]
+    let overview: String
 }

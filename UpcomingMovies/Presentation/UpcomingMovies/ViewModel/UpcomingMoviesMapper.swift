@@ -40,7 +40,8 @@ extension UpcomingMoviesMapper {
                                iconPath: $0.iconPath,
                                backdropPath: $0.backdropPath,
                                releaseDate: dateFormatter.string(from: $0.releaseDate),
-                               genres: $0.genres)
+                               genres: $0.genres,
+                               overview: $0.overview)
         }
     }
     

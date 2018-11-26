@@ -122,8 +122,15 @@ extension UpcomingMoviesTableViewController {
         
         tableView.rx.itemSelected
             .subscribe(onNext: { [unowned self] indexPath in
-                let _ = self.tableView.cellForRow(at: indexPath) as? UpcomingMovieTableViewCell
-                let controller = MovieTableViewController()
+                let cell = self.tableView.cellForRow(at: indexPath) as? UpcomingMovieTableViewCell
+                guard let upcoming = cell?.upcomingMovie else { return }
+                let movie = MovieModel(name: upcoming.name,
+                                       iconImage: cell?.movieIcon,
+                                       backdropImage: cell?.movieBackdrop,
+                                       releaseDate: upcoming.releaseDate,
+                                       genres: upcoming.genres,
+                                       overview: upcoming.overview)
+                let controller = MovieTableViewController(movie: movie)
                 self.navigationController?.pushViewController(controller, animated: true)
             })
             .disposed(by: bag)

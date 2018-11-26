@@ -14,7 +14,10 @@ import UIKit
 
 final class MovieTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet private var tableView: UITableView!
-    init() {
+    let movie: MovieModel
+    
+    init(movie: MovieModel) {
+        self.movie = movie
         super.init(nibName: MovieTableViewController.identifier, bundle: nil)
     }
     
@@ -30,9 +33,9 @@ final class MovieTableViewController: UIViewController, UITableViewDataSource, U
 
         tableView.register(cellNib: MovieTableViewCell.self)
         
-        let image = #imageLiteral(resourceName: "internalErrorIcon")
+        let image = movie.backdropImage
         let imageView = UIImageView(image: image)
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
         
         imageView.blurView.setup(style: .dark, alpha: 1).enable()
         
@@ -46,7 +49,8 @@ final class MovieTableViewController: UIViewController, UITableViewDataSource, U
         let roundIcon = UIImageView(
             frame: CGRect(x: 0, y: 0, width: 100, height: 100)
         )
-        roundIcon.image = image
+        roundIcon.contentMode = .scaleAspectFill
+        roundIcon.image = movie.iconImage
         roundIcon.layer.borderColor = UIColor.white.cgColor
         roundIcon.layer.borderWidth = 2
         roundIcon.layer.cornerRadius = roundIcon.frame.width / 2
@@ -72,7 +76,7 @@ final class MovieTableViewController: UIViewController, UITableViewDataSource, U
         switch section {
         case 1: return 1
         case 2: return 1
-        case 3: return 5
+        case 3: return movie.genres.count
         default: return 0
         }
     }
@@ -88,6 +92,12 @@ final class MovieTableViewController: UIViewController, UITableViewDataSource, U
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: MovieTableViewCell = tableView.dequeueReusableCell(for: indexPath)
+        switch indexPath.section {
+        case 1: cell.titleText = movie.overview
+        case 2: cell.titleText = movie.releaseDate
+        case 3: cell.titleText = movie.genres[indexPath.row]
+        default: return cell
+        }
         return cell
     }
     

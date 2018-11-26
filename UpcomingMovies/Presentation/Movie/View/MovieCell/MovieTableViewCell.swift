@@ -9,6 +9,13 @@
 import UIKit
 
 class MovieTableViewCell: UITableViewCell {
+    @IBOutlet private var label: UILabel!
+    
+    var titleText: String? {
+        didSet {
+            label.text = titleText
+        }
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()
