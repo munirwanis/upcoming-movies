@@ -1,0 +1,22 @@
+/* 
+  Localizable.strings
+  UpcomingMovies
+
+  Created by Munir Wanis on 2018-11-20.
+  Copyright © 2018 Wanis Co. All rights reserved.
+*/
+
+"no-connection-title" = "No network connection :(";
+"no-connection-description" = "Don't worry, you can try again!";
+"no-connection-retry" = "Retry";
+
+"internal-error-title" = "Sorry!";
+"internal-error-description" = "Something went wrong. :(";
+
+"upcoming-movies-release-date" = "Release date:";
+"upcoming-movies-genres" = "Genres:";
+"upcoming-movies-title" = "Upcoming Movies";
+
+"movie-overview" = "Overview";
+"movie-release-date" = "Release date";
+"movie-genres" = "Genres";
