@@ -71,6 +71,8 @@
 		A1F285A421AB9A2D00675011 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1F285A321AB9A2D00675011 /* SnapKit.framework */; };
 		A1F285AA21ABA1A000675011 /* GenresDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F285A921ABA1A000675011 /* GenresDatabase.swift */; };
 		A1F285AF21ABA24300675011 /* GenresResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F285AE21ABA24300675011 /* GenresResponse.swift */; };
+		A1F285B321ABB3EB00675011 /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F285B121ABB3EB00675011 /* MovieTableViewCell.swift */; };
+		A1F285B421ABB3EB00675011 /* MovieTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1F285B221ABB3EB00675011 /* MovieTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -161,6 +163,8 @@
 		A1F285A321AB9A2D00675011 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
 		A1F285A921ABA1A000675011 /* GenresDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenresDatabase.swift; sourceTree = "<group>"; };
 		A1F285AE21ABA24300675011 /* GenresResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenresResponse.swift; sourceTree = "<group>"; };
+		A1F285B121ABB3EB00675011 /* MovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
+		A1F285B221ABB3EB00675011 /* MovieTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -536,6 +540,7 @@
 		A1F2859A21AB929F00675011 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A1F285B021ABB3D300675011 /* MovieCell */,
 				A1F2859B21AB92C800675011 /* MovieTableViewController.swift */,
 				A1F2859C21AB92C800675011 /* MovieTableViewController.xib */,
 			);
@@ -565,6 +570,15 @@
 				A1F285AE21ABA24300675011 /* GenresResponse.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		A1F285B021ABB3D300675011 /* MovieCell */ = {
+			isa = PBXGroup;
+			children = (
+				A1F285B121ABB3EB00675011 /* MovieTableViewCell.swift */,
+				A1F285B221ABB3EB00675011 /* MovieTableViewCell.xib */,
+			);
+			path = MovieCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -678,6 +692,7 @@
 				A12420FA21A4C64D00E18EB9 /* InternalOrServerErrorViewController.xib in Resources */,
 				A1F2859E21AB92C800675011 /* MovieTableViewController.xib in Resources */,
 				A124209F21A49F0700E18EB9 /* Assets.xcassets in Resources */,
+				A1F285B421ABB3EB00675011 /* MovieTableViewCell.xib in Resources */,
 				A12420E721A4BEFB00E18EB9 /* LoadingViewController.xib in Resources */,
 				A124215021A9728200E18EB9 /* UpcomingMovieTableViewCell.xib in Resources */,
 				A12420EC21A4BFEB00E18EB9 /* NoConnectionViewController.xib in Resources */,
@@ -735,6 +750,7 @@
 			files = (
 				A124213621A95BAB00E18EB9 /* MovieDetailsService.swift in Sources */,
 				A124214021A960D600E18EB9 /* UpcomingMoviesViewModel.swift in Sources */,
+				A1F285B321ABB3EB00675011 /* MovieTableViewCell.swift in Sources */,
 				A124211521A4EC7000E18EB9 /* ParameterEncoding.swift in Sources */,
 				A124212021A64C0F00E18EB9 /* UpcomingMoviesResponse.swift in Sources */,
 				A12420FE21A4C9F300E18EB9 /* Movie.swift in Sources */,

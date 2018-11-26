@@ -12,7 +12,8 @@ import RxSwift
 import SnapKit
 import UIKit
 
-final class MovieTableViewController: UITableViewController {
+final class MovieTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    @IBOutlet private var tableView: UITableView!
     init() {
         super.init(nibName: MovieTableViewController.identifier, bundle: nil)
     }
@@ -23,7 +24,12 @@ final class MovieTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.dataSource = self
+        tableView.delegate = self
 
+        tableView.register(cellNib: MovieTableViewCell.self)
+        
         let image = #imageLiteral(resourceName: "internalErrorIcon")
         let imageView = UIImageView(image: image)
         imageView.contentMode = .scaleAspectFit
@@ -58,24 +64,31 @@ final class MovieTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 4
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 30
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        switch section {
+        case 1: return 1
+        case 2: return 1
+        case 3: return 5
+        default: return 0
+        }
     }
 
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch section {
+        case 1: return "Overview"
+        case 2: return "Release date"
+        case 3: return "Genres"
+        default: return nil
+        }
+    }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-//
-//        // Configure the cell...
-//
-//        return cell
-        return UITableViewCell()
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell: MovieTableViewCell = tableView.dequeueReusableCell(for: indexPath)
+        return cell
     }
     
 
